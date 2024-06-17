@@ -4,8 +4,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 export const SearchField = () => {
   const [ fieldText, setFieldText ] = useState('');
-  const [ locationsList, setLocationsList ] = useState([]);
   const [ location, setLocation ] = useState();
+  const [ locationsList, setLocationsList ] = useState([]);
 
   useEffect(() => {
 		const getLocations = setTimeout(() => {
