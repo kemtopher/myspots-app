@@ -9,33 +9,31 @@ export const Map = React.memo(({ lon, lat, events }) => {
     const marker = useRef(null);
 
     useEffect(() => {
-        if (map.current) return;
-
-        map.current = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v12',
-            center: [lon, lat],
-            zoom: 11
-        });
-
-        map.current.on("load", () => {
-            map.current.resize();
-        });
-    }, [lon, lat])
-
-    useEffect(() => {
-        if (!map.current) return;
-
-        if (marker.current) {
-            marker.current.remove();
+        if (map.current) {
+            if (marker.current) {
+                marker.current.remove();
+            }
+    
+            map.current.flyTo({
+                center: [lon, lat],
+                essential: true
+            });
+    
+            marker.current = new mapboxgl.Marker({color: '#FF0000'}).setLngLat([lon, lat]).addTo(map.current);
         }
 
-        map.current.flyTo({
-            center: [lon, lat],
-            essential: true
-        });
-
-        marker.current = new mapboxgl.Marker({color: '#FF0000'}).setLngLat([lon, lat]).addTo(map.current);
+        if (!map.current) {
+            map.current = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: 'mapbox://styles/mapbox/streets-v12',
+                center: [lon, lat],
+                zoom: 11
+            });
+    
+            map.current.on("load", () => {
+                map.current.resize();
+            });
+        }
     }, [lon, lat]);
 
     useEffect(() => {
