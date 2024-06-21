@@ -5,16 +5,16 @@ import { useDispatch } from 'react-redux';
 import { setCurrent } from '../../store/slices/coordinates';
 
 export const AppWrapper = () => {
-    const coords = useGeolocation();
+    const { loading, error, data } = useGeolocation();
     const dispatch = useDispatch();
 
     useEffect(() => {
-      if(!coords.data.latitude || !coords.data.longitude) return;
+      if(!data.latitude || !data.longitude) return;
 
-      dispatch(setCurrent({lon: coords.data.longitude, lat: coords.data.latitude}));
-    }, [coords, dispatch])
+      dispatch(setCurrent({lon: data.longitude, lat: data.latitude}));
+    }, [data, dispatch])
 
   return (
-    <App />
+    <App loading={loading} error={error} />
   )
 }

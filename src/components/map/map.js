@@ -27,7 +27,7 @@ export const Map = React.memo(({ lon, lat, events }) => {
                 container: mapContainer.current,
                 style: 'mapbox://styles/mapbox/streets-v12',
                 center: [lon, lat],
-                zoom: 11
+                zoom: 16
             });
     
             map.current.on("load", () => {

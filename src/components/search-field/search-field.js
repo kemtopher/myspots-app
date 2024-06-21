@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrent } from '../../store/slices/coordinates';
+
 
 export const SearchField = () => {
   const [ fieldText, setFieldText ] = useState('');
-  const [ location, setLocation ] = useState();
   const [ locationsList, setLocationsList ] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
 		const getLocations = setTimeout(() => {
@@ -26,7 +29,7 @@ export const SearchField = () => {
         options={locationsList}
         getOptionLabel={option => option.place_name || ""}
         onChange={(event, value) => {
-          setLocation(value);
+          dispatch(setCurrent({lon: value.center[0], lat: value.center[1]}))
         }}
         renderInput={(params) => (
           <TextField

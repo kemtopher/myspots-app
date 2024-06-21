@@ -1,5 +1,5 @@
 import React from 'react';
-// import { CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '@mui/material';
 
 
 export const MapLoader = ({
@@ -20,7 +20,7 @@ export const MapLoader = ({
     if (error || loading) {
 		return (
 			<div className="map-loader" style={ loadingStyles }>
-				{/* { error ? <div>ERROR: { error?.message }</div> : <CircularProgress />} */}
+				{ error ? <div>ERROR: { error?.message }</div> : <CircularProgress />}
 			</div>
 		)
 	}
