@@ -8,6 +8,7 @@ import { SearchField } from './components/search-field/search-field';
 import { RadiusSelect } from './components/radius-select/radius-select';
 import { useSelector } from "react-redux";
 import './App.scss';
+import { RideActions } from './components/ride-actions/ride-actions';
 
 export const App = ({
 	loading,
@@ -20,7 +21,7 @@ export const App = ({
 	return (
 		<div className="App" style={{height: '100vh'}}>
 			<Grid container spacing={0} sx={{height: '100%'}}>
-				<Grid item xs={8} sx={{height: '100%'}}>
+				<Grid item xs={12} md={8} sx={{height: '100%'}}>
 					<Grid container>
 						<Grid item xs={9}>
 							<SearchField />
@@ -41,8 +42,15 @@ export const App = ({
 						</Grid>
 					</Grid>
 				</Grid>
-				<Grid item xs={4}>
-					
+				<Grid item xs={12} md={4}>
+					<Grid container>
+						<Grid item xs={12}>
+							<RideActions />
+						</Grid>
+						<Grid item xs={12}>
+							<h1>List area</h1>
+						</Grid>
+					</Grid>
 				</Grid>
 			</Grid>        
 		</div>

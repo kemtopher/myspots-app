@@ -29,7 +29,10 @@ export const SearchField = () => {
         options={locationsList}
         getOptionLabel={option => option.place_name || ""}
         onChange={(event, value) => {
-          dispatch(setCurrent({lon: value.center[0], lat: value.center[1]}))
+          if(value.center !== null) {
+            dispatch(setCurrent({lon: value.center[0], lat: value.center[1]}))
+          }
+          console.log(value)
         }}
         renderInput={(params) => (
           <TextField
