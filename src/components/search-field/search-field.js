@@ -31,6 +31,9 @@ export const SearchField = () => {
         onChange={(event, value) => {
           if(value.center !== null) {
             dispatch(setCurrent({lon: value.center[0], lat: value.center[1]}))
+            console.log(
+              "val: ", value
+            )
           }
           console.log(value)
         }}

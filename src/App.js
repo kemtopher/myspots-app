@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
 import {
   Grid,
 } from '@mui/material'
@@ -9,6 +9,9 @@ import { RadiusSelect } from './components/radius-select/radius-select';
 import { useSelector } from "react-redux";
 import './App.scss';
 import { RideActions } from './components/ride-actions/ride-actions';
+import { RideList } from './components/ride-list/ride-list';
+
+// const Map = lazy(() => import(webpackChunkName: 'Map', ))n
 
 export const App = ({
 	loading,
@@ -48,7 +51,7 @@ export const App = ({
 							<RideActions />
 						</Grid>
 						<Grid item xs={12}>
-							<h1>List area</h1>
+							<RideList nodes={events} />
 						</Grid>
 					</Grid>
 				</Grid>
