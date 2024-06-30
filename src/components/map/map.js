@@ -40,7 +40,7 @@ export const Map = React.memo(({ lon, lat, events }) => {
         if (!events) return;
 
         events.forEach((event) => {
-            new mapboxgl.Marker().setLngLat([event.lon, event.lat]).addTo(map.current);
+            new mapboxgl.Marker().setLngLat([event.location.coordinates[0], event.location.coordinates[1]]).addTo(map.current);
         })
     }, [events]);
 

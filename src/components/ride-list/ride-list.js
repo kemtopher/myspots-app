@@ -1,30 +1,10 @@
 import React from "react";
-// import RideCard from '../'
 import {
   Grid,
   Typography,
   Box
 } from "@mui/material";
-// import { makeStyles } from '@material-ui/core/styles/';
-
-// const useStyles = makeStyles({
-//   header: {
-//     padding: '16px',
-//     color: 'var(--light-40)',
-//     borderBottom: '1px solid rgba(224, 224, 224, 1)',
-//   },
-//   headerTitle: {
-//     fontSize: '0.875rem',
-//     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-//     fontWeight: '400',
-//     lineHeight: '1.5',
-//     letterSpacing: '0.01071em',
-//   },
-//   list: {
-//     height: '100%',
-//     overflow: 'scroll',
-//   },
-// });
+import { RideCard } from "../ride-card/ride-card";
 
 export const RideList = ({nodes}) => {
   const classes = {
@@ -45,7 +25,10 @@ export const RideList = ({nodes}) => {
       overflow: 'scroll',
     },
   }
-  // const classes = useStyles();
+
+  const CardList = nodes.map(node => (
+    <RideCard key={node.id} data={node} />
+  ))
 
   return (
     <section id="ride-list" sx={ classes.list }>
@@ -63,9 +46,7 @@ export const RideList = ({nodes}) => {
             </Grid>
           </Grid>
 
-          {/* { nodes.map(({ node }) => (
-            <RideCard key={node.id} ride={node} />
-          ))} */}
+          { CardList }
         </>
       ) : (
         <Box display="flex" alignItems="center" justifyContent="center" height="100%">
