@@ -17,6 +17,11 @@ export const App = ({
 	loading,
 	error
 }) => {
+	const classes = {
+		ridelist: {
+			height: '100%',
+		}
+	}
 	
 	const events = useSelector(state => state.events.value);
 	const coords = useSelector(state => state.coordinates.current);
@@ -45,12 +50,12 @@ export const App = ({
 						</Grid>
 					</Grid>
 				</Grid>
-				<Grid item xs={12} md={4}>
-					<Grid container>
+				<Grid item xs={12} md={4} sx={classes.ridelist}>
+					<Grid container sx={classes.ridelist}>
 						<Grid item xs={12}>
 							<RideActions />
 						</Grid>
-						<Grid item xs={12}>
+						<Grid item xs={12} sx={{height: 'calc(100% - 60px)'}}>
 							<RideList nodes={events} />
 						</Grid>
 					</Grid>

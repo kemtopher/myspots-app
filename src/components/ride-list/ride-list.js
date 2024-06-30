@@ -22,16 +22,12 @@ export const RideList = ({nodes}) => {
     },
     list: {
       height: '100%',
-      overflow: 'scroll',
+      overflow: 'scroll'
     },
   }
 
-  const CardList = nodes.map(node => (
-    <RideCard key={node.id} data={node} />
-  ))
-
   return (
-    <section id="ride-list" sx={ classes.list }>
+    <section id="ride-list" style={ classes.list }>
       { nodes.length ? (
         <>
           <Grid container sx={classes.header} display='flex'>
@@ -46,7 +42,9 @@ export const RideList = ({nodes}) => {
             </Grid>
           </Grid>
 
-          { CardList }
+          { nodes.map(node => (
+            <RideCard key={node.id} data={node} />
+          )) }
         </>
       ) : (
         <Box display="flex" alignItems="center" justifyContent="center" height="100%">
