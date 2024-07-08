@@ -47,8 +47,8 @@ export const RideList = ({nodes}) => {
       <section id="ride-list" style={ classes.scrolllist }>
         { nodes.length ? (
           <>
-            { nodes.map(node => (
-              <RideCard key={node.id} data={node} />
+            { nodes.map((node, index) => (
+              <RideCard key={index} data={node} />
             )) }
           </>
         ) : (

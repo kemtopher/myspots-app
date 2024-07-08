@@ -42,8 +42,8 @@ export const App = ({
 						<Grid item xs={12}>
 							<MapLoader loading={loading} error={error}>
 								<Map
-									lon={coords.lon}
-									lat={coords.lat}
+									lon={coords[0]}
+									lat={coords[1]}
 									events={ events }
 								/>
 							</MapLoader>

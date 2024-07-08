@@ -23,20 +23,25 @@ export const RideCard = ({data}) => {
             flexDirection: 'row',
             flexWrap: 'nowrap',
             padding: '1em',
-            borderBottom: 'var(--light-40)'
+            borderBottom: '1px solid var(--light-40)',
+
+            "&:last-child": {
+                borderBottom: '0px solid #fff'
+            }
         },
         actions: {
             flexWrap: 'nowrap'
         },
         rideTitle: {
             fontSize: '1.15em',
-            color: 'var(--primary-30)',
-            fontWeight: 500,
+            color: 'var(--primary-40)',
+            fontWeight: 700,
+            textDecoration: 'none',
 
-            "&:hover": {
-                textDecoration: 'none',
-                color: 'var(--primary-40)'
-            }
+            // "&:hover": {
+            //     textDecoration: 'none',
+            //     color: 'var(--primary-40)'
+            // }
         },
         ridePlace: {
             color: 'var(--primary-40)',
@@ -49,14 +54,21 @@ export const RideCard = ({data}) => {
         },
         secondaryText: {
             color: 'var(--primary-40)',
-        }
+        },
+        uncheckedIcon: {
+            color: 'var(--light-40)'
+        },
+        checkedIcon: {
+            color: 'var(--primary-40)'
+        },
     }
 
     return (
         <Grid container sx={classes.card}>
             <Grid item xs={5}>
-                <Typography component="h2">
-                    <a href={`/ride/${data.id}`} styles={classes.rideTitle}>{data.name}</a>
+                <Typography component="h2" sx={classes.rideTitle}>
+                    {data.name}
+                    {/* <a href={`/ride/${data.id}`} styles={classes.rideTitle}>{data.name}</a> */}
                 </Typography>
 
                 <Typography component="h2" sx={classes.ridePlace}>
@@ -79,7 +91,7 @@ export const RideCard = ({data}) => {
                 <Grid item>
                     <IconButton
                         variant="contained"
-                        sx={classes.secondaryText}
+                        sx={data.active ? classes.checkedIcon : classes.uncheckedIcon}
                         aria-label="RSVP to Event"
                         disableFocusRipple
                         disableRipple
@@ -91,7 +103,7 @@ export const RideCard = ({data}) => {
                 <Grid item>
                     <IconButton
                         variant="contained"
-                        sx={classes.secondaryText}
+                        sx={classes.uncheckedIcon}
                         aria-label="Edit Event"
                         disableFocusRipple
                         disableRipple
@@ -102,7 +114,7 @@ export const RideCard = ({data}) => {
                 <Grid item>
                     <IconButton
                         variant="comtained"
-                        sx={classes.secondaryText}
+                        sx={classes.uncheckedIcon}
                         aria-label="Delete Event"
                         disableFocusRipple
                         disableRipple

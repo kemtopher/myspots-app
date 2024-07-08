@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     value: [
         {
+            active: false,
             address: "101 Peachtree St",
             creator: {
                 id: "001",
@@ -18,6 +19,7 @@ const initialState = {
             name: "Object 1"
         },
         {
+            active: false,
             address: "102 Peachtree St",
             creator: {
                 id: "002",
@@ -33,6 +35,7 @@ const initialState = {
             name: "Object 2"
         },
         {
+            active: false,
             address: "103 Peachtree St",
             creator: {
                 id: "003",
@@ -48,6 +51,7 @@ const initialState = {
             name: "Object 3"
         },
         {
+            active: false,
             address: "104 Peachtree St",
             creator: {
                 id: "004",
@@ -63,6 +67,7 @@ const initialState = {
             name: "Object 4"
         },
         {
+            active: false,
             address: "105 Peachtree St",
             creator: {
                 id: "005",
@@ -78,6 +83,7 @@ const initialState = {
             name: "Object 5"
         },
         {
+            active: false,
             address: "106 Peachtree St",
             creator: {
                 id: "006",
@@ -93,6 +99,7 @@ const initialState = {
             name: "Object 6"
         },
         {
+            active: false,
             address: "107 Peachtree St",
             creator: {
                 id: "007",
@@ -108,6 +115,7 @@ const initialState = {
             name: "Object 7"
         },
         {
+            active: false,
             address: "108 Peachtree St",
             creator: {
                 id: "008",
@@ -123,6 +131,7 @@ const initialState = {
             name: "Object 8"
         },
         {
+            active: false,
             address: "109 Peachtree St",
             creator: {
                 id: "009",
@@ -138,6 +147,7 @@ const initialState = {
             name: "Object 9"
         },
         {
+            active: false,
             address: "110 Peachtree St",
             creator: {
                 id: "010",
@@ -153,6 +163,7 @@ const initialState = {
             name: "Object 10"
         },
         {
+            active: false,
             address: "111 Peachtree St",
             creator: {
                 id: "011",
@@ -168,6 +179,7 @@ const initialState = {
             name: "Object 11"
         },
         {
+            active: false,
             address: "112 Peachtree St",
             creator: {
                 id: "012",
@@ -183,6 +195,7 @@ const initialState = {
             name: "Object 12"
         },
         {
+            active: false,
             address: "113 Peachtree St",
             creator: {
                 id: "013",
@@ -198,6 +211,7 @@ const initialState = {
             name: "Object 13"
         },
         {
+            active: false,
             address: "114 Peachtree St",
             creator: {
                 id: "014",
@@ -213,6 +227,7 @@ const initialState = {
             name: "Object 14"
         },
         {
+            active: false,
             address: "115 Peachtree St",
             creator: {
                 id: "015",
@@ -228,6 +243,7 @@ const initialState = {
             name: "Object 15"
         },
         {
+            active: false,
             address: "116 Peachtree St",
             creator: {
                 id: "016",
@@ -243,6 +259,7 @@ const initialState = {
             name: "Object 16"
         },
         {
+            active: false,
             address: "117 Peachtree St",
             creator: {
                 id: "017",
@@ -258,6 +275,7 @@ const initialState = {
             name: "Object 17"
         },
         {
+            active: false,
             address: "118 Peachtree St",
             creator: {
                 id: "018",
@@ -273,6 +291,7 @@ const initialState = {
             name: "Object 18"
         },
         {
+            active: false,
             address: "119 Peachtree St",
             creator: {
                 id: "019",
@@ -288,6 +307,7 @@ const initialState = {
             name: "Object 19"
         },
         {
+            active: false,
             address: "120 Peachtree St",
             creator: {
                 id: "020",
@@ -303,6 +323,7 @@ const initialState = {
             name: "Object 20"
         },
         {
+            active: false,
             address: "121 Peachtree St",
             creator: {
                 id: "021",
@@ -318,6 +339,7 @@ const initialState = {
             name: "Object 21"
         },
         {
+            active: false,
             address: "122 Peachtree St",
             creator: {
                 id: "022",
@@ -340,10 +362,23 @@ export const eventsSlice = createSlice({
     initialState,
     reducers: {
         addEvent: (state, action) => {
-            state.value = [...state, action.payload];
+            state = [...state, action.payload];
         },
+        setActive: (state, action) => {
+            let adjustedValue = state.value.map(event => {
+                if (event.id === action.payload.id) {
+                    return {...event, active: true}
+                } else if (event.active) {
+                    return {...event, active: false}
+                } else {
+                    return event;
+                }
+            })
+
+            state.value = adjustedValue;
+        }
     }
 });
 
-export const { addEvent } = eventsSlice.actions;
+export const { addEvent, setActive } = eventsSlice.actions;
 export default eventsSlice.reducer;

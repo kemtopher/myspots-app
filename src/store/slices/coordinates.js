@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    current: { lon: '-96.7970', lat: '32.7767' },
+    current: [ -96.7970, 32.7767 ],
 }
 
 export const coordinatesSlice = createSlice({

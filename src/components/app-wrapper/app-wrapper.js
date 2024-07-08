@@ -11,7 +11,7 @@ export const AppWrapper = () => {
     useEffect(() => {
       if(!data.latitude || !data.longitude) return;
 
-      dispatch(setCurrent({lon: data.longitude, lat: data.latitude}));
+      dispatch(setCurrent([data.longitude, data.latitude]));
     }, [data, dispatch])
 
   return (

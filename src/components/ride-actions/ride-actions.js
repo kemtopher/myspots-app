@@ -24,35 +24,32 @@ export const RideActions = () => {
     >
         <Button
             variant="contained"
-            // className={`ridefind-button ${customClass} ${classes.buttonStyles}`}
             fullWidth
             size='large'
             disableElevation
-            // destination="/rides"
+            disableRipple
+            aria-label="Edit Event"
             sx={styles.actionButton}
         >
             Nearby
         </Button>
         <Button
             variant="contained"
-            // className={`ridefind-button ${customClass} ${classes.buttonStyles}`}
             fullWidth
             size='large'
             disableElevation
+            disableRipple
             destination="/rides/going"
-            // disabled={!isAuthed()}
             sx={styles.actionButton}
         >
             RSVP'd
         </Button>
         <Button
             variant="contained"
-            // className={`ridefind-button ${customClass} ${classes.buttonStyles}`}
             fullWidth
             size='large'
             disableElevation
-            // destination="/rides/hosting"
-            // disabled={!isAuthed()}
+            disableRipple
             sx={styles.actionButton}
         >
             Hosting

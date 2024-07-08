@@ -30,17 +30,18 @@ export const SearchField = () => {
         getOptionLabel={option => option.place_name || ""}
         onChange={(event, value) => {
           if(value.center !== null) {
-            dispatch(setCurrent({lon: value.center[0], lat: value.center[1]}))
-            // console.log(
-            //   "val: ", value
-            // )
+            dispatch(setCurrent([value.center[0], value.center[1]]));
           }
-          // console.log(value)
         }}
         renderInput={(params) => (
           <TextField
             {...params}
             label="Location" 
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "0px",
+              }
+            }}
             value={fieldText}
             onChange={event => setFieldText(event.target.value)}
           />
