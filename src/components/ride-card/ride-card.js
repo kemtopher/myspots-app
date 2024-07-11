@@ -1,11 +1,10 @@
-import React, {useEffect } from 'react';
+import React from 'react';
 import { useFormatTime } from '../../hooks/useFormatTime';
 import { useFormatDate } from '../../hooks/useFormatDate';
 import {
     Typography,
     Grid,
     IconButton,
-    Button
 } from '@mui/material';
 import {
     Delete,
@@ -91,7 +90,7 @@ export const RideCard = ({data}) => {
                 <Grid item>
                     <IconButton
                         variant="contained"
-                        sx={data.active ? classes.checkedIcon : classes.uncheckedIcon}
+                        sx={classes.uncheckedIcon}
                         aria-label="RSVP to Event"
                         disableFocusRipple
                         disableRipple

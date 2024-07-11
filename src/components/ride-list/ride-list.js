@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setActive, removeActive } from "../../store/slices/events";
 import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Grid,
   Typography,
-  Box
+  Box,
 } from "@mui/material";
+import {
+  ExpandMore
+} from '@mui/icons-material';
 import { RideCard } from "../ride-card/ride-card";
 
 export const RideList = ({nodes}) => {
+  const dispatch = useDispatch();
+  const rideList = useRef();
+  const accordionEls = useRef([]);
+
   const classes = {
     header: {
       padding: '16px',
@@ -29,6 +41,26 @@ export const RideList = ({nodes}) => {
     }
   }
 
+  // WHY DOES THIS NOT WORK BUT BELOW onClick DOES WORK
+  // const handleMarkerClick = (node) => {
+  //   if (!node) return;
+  //   dispatch(setActive(node));
+
+    // if (node.active) {
+    //   dispatch(removeActive(node));
+    // } else {
+    //   dispatch(setActive(node));
+    // }
+  // }
+
+  // useEffect(() => {
+    // if (activeAccordion === null) return;
+
+    // const topPosition = accordionEls.current[activeAccordion].offsetTop;
+    // rideList.current.scrollTop = topPosition;
+  // }, [activeAccordion]);
+
+
   return (
     <>
       <section>
@@ -44,11 +76,37 @@ export const RideList = ({nodes}) => {
           </Grid>
         </Grid>
       </section>
-      <section id="ride-list" style={ classes.scrolllist }>
+      <section id="ride-list" ref={rideList} style={ classes.scrolllist }>
         { nodes.length ? (
           <>
             { nodes.map((node, index) => (
-              <RideCard key={index} data={node} />
+              <Accordion
+                expanded={node.active}
+                ref={el => accordionEls.current[index] = el}
+                // SEE ABOVE
+                // onClick={handleClickActive(node)}
+                onClick={() => {
+                  if (node.active) {
+                    dispatch(removeActive());
+                  } else {
+                    dispatch(setActive(node))
+                  }
+                }}
+                key={node.id}
+              >
+                <AccordionSummary
+                expandIcon={<ExpandMore />}
+                aria-controls="panel1-content"
+                id="panel1-header"
+                >
+                  <RideCard key={index} data={node} />
+                </AccordionSummary>
+
+                <AccordionDetails>
+                  { node.description }
+                </AccordionDetails>
+              </Accordion>
+              
             )) }
           </>
         ) : (
