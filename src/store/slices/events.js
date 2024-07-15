@@ -4,6 +4,7 @@ const initialState = {
     value: [
         {
             active: false,
+            rsvp: true,
             address: "101 Peachtree St",
             creator: {
                 id: "001",
@@ -21,6 +22,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "102 Peachtree St",
             creator: {
                 id: "002",
@@ -38,6 +40,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "103 Peachtree St",
             creator: {
                 id: "003",
@@ -55,6 +58,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "104 Peachtree St",
             creator: {
                 id: "004",
@@ -72,6 +76,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "105 Peachtree St",
             creator: {
                 id: "005",
@@ -89,6 +94,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "106 Peachtree St",
             creator: {
                 id: "006",
@@ -106,6 +112,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "107 Peachtree St",
             creator: {
                 id: "007",
@@ -123,6 +130,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "108 Peachtree St",
             creator: {
                 id: "008",
@@ -140,6 +148,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "109 Peachtree St",
             creator: {
                 id: "009",
@@ -157,6 +166,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "110 Peachtree St",
             creator: {
                 id: "010",
@@ -174,6 +184,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "111 Peachtree St",
             creator: {
                 id: "011",
@@ -191,6 +202,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "112 Peachtree St",
             creator: {
                 id: "012",
@@ -208,6 +220,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "113 Peachtree St",
             creator: {
                 id: "013",
@@ -225,6 +238,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "114 Peachtree St",
             creator: {
                 id: "014",
@@ -242,6 +256,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "115 Peachtree St",
             creator: {
                 id: "015",
@@ -259,6 +274,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "116 Peachtree St",
             creator: {
                 id: "016",
@@ -276,6 +292,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "117 Peachtree St",
             creator: {
                 id: "017",
@@ -293,6 +310,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: true,
             address: "118 Peachtree St",
             creator: {
                 id: "018",
@@ -310,6 +328,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "119 Peachtree St",
             creator: {
                 id: "019",
@@ -327,6 +346,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "120 Peachtree St",
             creator: {
                 id: "020",
@@ -344,6 +364,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "121 Peachtree St",
             creator: {
                 id: "021",
@@ -361,6 +382,7 @@ const initialState = {
         },
         {
             active: false,
+            rsvp: false,
             address: "122 Peachtree St",
             creator: {
                 id: "022",
@@ -397,18 +419,43 @@ export const eventsSlice = createSlice({
             state.value = updatedState;
         },
         removeActive: (state, action) => {
+            console.log("removeActive: ", action.payload)
             let clearedState = state.value.map(event => {
-                if (event.active) {
-                    return {...event, active: false}
+                if (event.id === action.payload.id) {
+                    return { ...event, active: false }
                 } else {
                     return event;
                 }
             })
 
             state.value = clearedState;
-        }
+        },
+        setRsvp: (state, action) => {
+            let updateRsvp = state.value.map(event => {
+                if (event.id === action.payload.id) {
+                    if (event.rsvp) {
+                        return { ...event, active: false }
+                    } else {
+                        return { ...event, active: true }
+                    }
+                } else {
+                    return { ...event}
+                }
+            })
+
+            state.value = updateRsvp;
+        },
+        // removeEvent: (state, action) => {
+        //     let updatedState = state.value.map(event => {
+        //         if (event.id != action.payload.id) {
+        //             return {...event}
+        //         } else {
+        //             return;
+        //         }
+        //     })
+        // }
     }
 });
 
-export const { setActive, removeActive } = eventsSlice.actions;
+export const { setActive, setRsvp, removeActive } = eventsSlice.actions;
 export default eventsSlice.reducer;

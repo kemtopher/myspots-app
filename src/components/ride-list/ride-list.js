@@ -41,26 +41,6 @@ export const RideList = ({nodes}) => {
     }
   }
 
-  // WHY DOES THIS NOT WORK BUT BELOW onClick DOES WORK
-  // const handleMarkerClick = (node) => {
-  //   if (!node) return;
-  //   dispatch(setActive(node));
-
-    // if (node.active) {
-    //   dispatch(removeActive(node));
-    // } else {
-    //   dispatch(setActive(node));
-    // }
-  // }
-
-  // useEffect(() => {
-    // if (activeAccordion === null) return;
-
-    // const topPosition = accordionEls.current[activeAccordion].offsetTop;
-    // rideList.current.scrollTop = topPosition;
-  // }, [activeAccordion]);
-
-
   return (
     <>
       <section>
@@ -87,9 +67,9 @@ export const RideList = ({nodes}) => {
                 // onClick={handleClickActive(node)}
                 onClick={() => {
                   if (node.active) {
-                    dispatch(removeActive());
+                    dispatch(removeActive(node));
                   } else {
-                    dispatch(setActive(node))
+                    dispatch(setActive(node));
                   }
                 }}
                 key={node.id}

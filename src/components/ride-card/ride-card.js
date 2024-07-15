@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setRsvp } from '../../store/slices/events';
 import { useFormatTime } from '../../hooks/useFormatTime';
 import { useFormatDate } from '../../hooks/useFormatDate';
 import {
@@ -15,6 +17,7 @@ import {
 
 
 export const RideCard = ({data}) => {
+    const dispatch = useDispatch();
     const classes = {
         card: {
             width: '100%',
@@ -55,10 +58,12 @@ export const RideCard = ({data}) => {
             color: 'var(--primary-40)',
         },
         uncheckedIcon: {
-            color: 'var(--light-40)'
+            color: 'var(--light-40)',
+            // zIndex: 9999999
         },
         checkedIcon: {
-            color: 'var(--primary-40)'
+            color: 'var(--primary-40)',
+            // zIndex: 9999999
         },
     }
 
@@ -90,16 +95,19 @@ export const RideCard = ({data}) => {
                 <Grid item>
                     <IconButton
                         variant="contained"
-                        sx={classes.uncheckedIcon}
+                        sx={data.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
                         aria-label="RSVP to Event"
                         disableFocusRipple
                         disableRipple
+                        onClick={() => {
+                            dispatch(setRsvp(data))
+                        }}
                     >
                         <ThumbUp />
                     </IconButton>
                 </Grid>
       
-                <Grid item>
+                {/* <Grid item>
                     <IconButton
                         variant="contained"
                         sx={classes.uncheckedIcon}
@@ -109,7 +117,7 @@ export const RideCard = ({data}) => {
                     >
                         <Edit />
                     </IconButton>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                     <IconButton
                         variant="comtained"

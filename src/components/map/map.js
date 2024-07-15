@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { removeActive, setActive } from "../../store/slices/events";
 import mapboxgl from 'mapbox-gl';
@@ -10,6 +10,9 @@ export const Map = React.memo(({ lon, lat, events }) => {
     const map = useRef(null);
     const marker = useRef(null);
     const dispatch = useDispatch();
+    const [markersArr, setMarkersArr] = useState([]);
+
+    console.log("Reloaded: ", events)
 
     useEffect(() => {
         if (map.current) {
@@ -51,41 +54,45 @@ export const Map = React.memo(({ lon, lat, events }) => {
     useEffect(() => {
         if (!events) return;
 
-        events.forEach((event) => {
-            // const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-            //     'Construction on the Washington Monument began in 1848.'
-            // );
+        events.forEach((event, i) => {
 
             if (event.active) {
-                let marker = new mapboxgl.Marker({color: '#FF0000'})
+                let eventMarker = new mapboxgl.Marker({color: '#FF0000'})
                 .setLngLat([event.location.coordinates[0], event.location.coordinates[1]])
                 // .setPopup(popup)
                 .addTo(map.current);
 
-                marker.getElement().addEventListener('click', () => {
+                console.log("Event Marker: ", eventMarker)
+
+                eventMarker
+                .getElement()
+                .addEventListener('click', () => {
                     if (event.active) {
-                        dispatch(removeActive())
+                        dispatch(removeActive(event))
                     } else {
                         dispatch(setActive(event));
                     }
                 })
+
+                // setMarkersArr(markersArr => [...markersArr, eventMarker]);
             } else {
-                let marker = new mapboxgl.Marker()
+                let eventMarker = new mapboxgl.Marker()
                 .setLngLat([event.location.coordinates[0], event.location.coordinates[1]])
                 // .setPopup(popup)
                 .addTo(map.current);
 
-                marker.getElement().addEventListener('click', () => {
+                eventMarker.getElement().addEventListener('click', () => {
                     if (event.active) {
-                        dispatch(removeActive())
+                        dispatch(removeActive(event))
                     } else {
                         dispatch(setActive(event));
                     }
                 })
+
+                // setMarkersArr(markersArr => [...markersArr, eventMarker]);
             }
         })
     }, [events, dispatch]);
-
 
     return (
         <>

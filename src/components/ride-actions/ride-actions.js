@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 
 
-export const RideActions = () => {
+export const RideActions = ({ setEventsFilter }) => {
     const styles = {
         actionContainer: {
             height: '56px',
@@ -30,6 +30,7 @@ export const RideActions = () => {
             disableRipple
             aria-label="Edit Event"
             sx={styles.actionButton}
+            onClick={ () => setEventsFilter('nearby') }
         >
             Nearby
         </Button>
@@ -41,6 +42,7 @@ export const RideActions = () => {
             disableRipple
             destination="/rides/going"
             sx={styles.actionButton}
+            onClick={ () => setEventsFilter('rsvp') }
         >
             RSVP'd
         </Button>
@@ -51,6 +53,7 @@ export const RideActions = () => {
             disableElevation
             disableRipple
             sx={styles.actionButton}
+            onClick={ () => setEventsFilter('hosting') }
         >
             Hosting
         </Button>

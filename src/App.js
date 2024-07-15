@@ -1,4 +1,4 @@
-import React, { lazy, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import {
   Grid,
 } from '@mui/material'
@@ -25,6 +25,22 @@ export const App = ({
 	
 	const events = useSelector(state => state.events.value);
 	const coords = useSelector(state => state.coordinates.current);
+	const [eventsFilter, setEventsFilter] = useState(null);
+	const [filteredEvents, setFilteredEvents] = useState([]);
+
+	useEffect(() => {
+		if (eventsFilter === null || eventsFilter === 'nearby') {
+			setFilteredEvents(events);
+		} else if (eventsFilter === 'rsvp') {
+			const rsvpEvents = events.filter(event => event.rsvp === true);
+
+			setFilteredEvents(rsvpEvents);
+		} else if (eventsFilter === 'hosting') {
+			const hostingEvents = events.filter(event => event.hosting === true);
+
+			setFilteredEvents(hostingEvents);
+		}
+	}, [events, eventsFilter])
 
 	return (
 		<div className="App" style={{height: '100vh'}}>
@@ -44,7 +60,7 @@ export const App = ({
 								<Map
 									lon={coords[0]}
 									lat={coords[1]}
-									events={ events }
+									events={ filteredEvents }
 								/>
 							</MapLoader>
 						</Grid>
@@ -53,10 +69,10 @@ export const App = ({
 				<Grid item xs={12} md={4} sx={classes.ridelist}>
 					<Grid container sx={classes.ridelist}>
 						<Grid item xs={12}>
-							<RideActions />
+							<RideActions setEventsFilter={setEventsFilter} />
 						</Grid>
 						<Grid item xs={12} sx={{height: 'calc(100% - 60px)'}}>
-							<RideList nodes={events} />
+							<RideList nodes={filteredEvents} />
 						</Grid>
 					</Grid>
 				</Grid>
