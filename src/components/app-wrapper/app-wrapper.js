@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
-import { App } from "../../App";
+import { App } from '../../App';
 import { useGeolocation } from '../../hooks/useGeoLocation';
 import { useDispatch } from 'react-redux';
 import { setCurrent } from '../../store/slices/coordinates';
 
 export const AppWrapper = () => {
-    const { loading, error, data } = useGeolocation();
-    const dispatch = useDispatch();
+  const { loading, error, data } = useGeolocation();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      if(!data.latitude || !data.longitude) return;
+  useEffect(() => {
+    if (!data.latitude || !data.longitude) return;
 
-      dispatch(setCurrent([data.longitude, data.latitude]));
-    }, [data, dispatch])
+    dispatch(setCurrent([data.longitude, data.latitude]));
+  }, [data, dispatch]);
 
-  return (
-    <App loading={loading} error={error} />
-  )
-}
+  return <App loading={loading} error={error} />;
+};

@@ -1,102 +1,101 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { removeActive, setActive } from "../../store/slices/events";
+import React, { useEffect, useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeActive, setActive } from '../../store/slices/events';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2tlbWV6YTEiLCJhIjoiY2x1eDJlb2ZkMGoyYTJsa2xvdjNlbWdtOCJ9.sqWPYFQf4FJtw47DYoGI0g';
+mapboxgl.accessToken =
+  'pk.eyJ1IjoiY2tlbWV6YTEiLCJhIjoiY2x1eDJlb2ZkMGoyYTJsa2xvdjNlbWdtOCJ9.sqWPYFQf4FJtw47DYoGI0g';
 
 export const Map = React.memo(({ lon, lat, events }) => {
-    const mapContainer = useRef(null);
-    const map = useRef(null);
-    const marker = useRef(null);
-    const dispatch = useDispatch();
-    const [markersArr, setMarkersArr] = useState([]);
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const marker = useRef(null);
+  const dispatch = useDispatch();
+  const [arr, setArr] = useState([]);
 
-    console.log("Reloaded: ", events)
+  useEffect(() => {
+    if (map.current) {
+      if (marker.current) {
+        marker.current.remove();
+      }
 
-    useEffect(() => {
-        if (map.current) {
-            if (marker.current) {
-                marker.current.remove();
-            }
-    
-            map.current.flyTo({
-                center: [lon, lat],
-                essential: true
-            });
-    
-            // marker.current = new mapboxgl.Marker({color: '#FF0000'}).setLngLat([lon, lat]).addTo(map.current);
-        }
+      map.current.flyTo({
+        center: [lon, lat],
+        essential: true
+      });
+    }
 
-        if (!map.current) {
-            map.current = new mapboxgl.Map({
-                container: mapContainer.current,
-                style: 'mapbox://styles/mapbox/streets-v12',
-                center: [lon, lat],
-                zoom: 16,
-                // scrollZoom: false
-            });
+    if (!map.current) {
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [lon, lat],
+        zoom: 16
+      });
 
-            var nav = new mapboxgl.NavigationControl({
-                showZoom: true
-            });
-        
-            map.current.addControl(nav, "top-left");
-    
-            map.current.on("load", () => {
-                map.current.resize();
-            });
-        }
+      var nav = new mapboxgl.NavigationControl({
+        showZoom: true
+      });
 
-        // return () => map.current.remove();
-    }, [lon, lat]);
+      map.current.addControl(nav, 'top-left');
 
-    useEffect(() => {
-        if (!events) return;
+      map.current.on('load', () => {
+        map.current.resize();
+      });
+    }
 
-        events.forEach((event, i) => {
+    // return () => map.current.remove();
+  }, [lon, lat]);
 
-            if (event.active) {
-                let eventMarker = new mapboxgl.Marker({color: '#FF0000'})
-                .setLngLat([event.location.coordinates[0], event.location.coordinates[1]])
-                // .setPopup(popup)
-                .addTo(map.current);
+  useEffect(() => {
+    if (!events) return;
+    if (arr.length) {
+        arr.forEach(marker => marker.remove())
+        setArr([]);
+    }
 
-                console.log("Event Marker: ", eventMarker)
+    events.forEach((event, i) => {
+      if (event.active) {
+        let eventMarker = new mapboxgl.Marker({ color: '#FF0000' })
+          .setLngLat([
+            event.location.coordinates[0],
+            event.location.coordinates[1]
+          ])
+          .addTo(map.current);
 
-                eventMarker
-                .getElement()
-                .addEventListener('click', () => {
-                    if (event.active) {
-                        dispatch(removeActive(event))
-                    } else {
-                        dispatch(setActive(event));
-                    }
-                })
+        eventMarker.getElement().addEventListener('click', () => {
+          if (event.active) {
+            dispatch(removeActive(event));
+          } else {
+            dispatch(setActive(event));
+          }
+        });
 
-                // setMarkersArr(markersArr => [...markersArr, eventMarker]);
-            } else {
-                let eventMarker = new mapboxgl.Marker()
-                .setLngLat([event.location.coordinates[0], event.location.coordinates[1]])
-                // .setPopup(popup)
-                .addTo(map.current);
+        setArr((arr) => [...arr, eventMarker]);
+      } else {
+        let eventMarker = new mapboxgl.Marker()
+          .setLngLat([
+            event.location.coordinates[0],
+            event.location.coordinates[1]
+          ])
+          .addTo(map.current);
 
-                eventMarker.getElement().addEventListener('click', () => {
-                    if (event.active) {
-                        dispatch(removeActive(event))
-                    } else {
-                        dispatch(setActive(event));
-                    }
-                })
+        eventMarker.getElement().addEventListener('click', () => {
+          if (event.active) {
+            dispatch(removeActive(event));
+          } else {
+            dispatch(setActive(event));
+          }
+        });
 
-                // setMarkersArr(markersArr => [...markersArr, eventMarker]);
-            }
-        })
-    }, [events, dispatch]);
+        setArr((arr) => [...arr, eventMarker]);
+      }
+    });
+  }, [arr, events, dispatch]);
 
-    return (
-        <>
-            <div ref={mapContainer} className="map-container" />
-        </>
-    )
-})
+  return (
+    <>
+      <div ref={mapContainer} className="map-container" />
+    </>
+  );
+});
