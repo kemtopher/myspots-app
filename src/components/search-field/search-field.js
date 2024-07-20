@@ -30,6 +30,7 @@ export const SearchField = () => {
       getOptionLabel={(option) => option.place_name || ''}
       onChange={(event, value) => {
         if (value.center !== null) {
+          console.log("value.center: ", value.center)
           dispatch(setCurrent([value.center[0], value.center[1]]));
         }
       }}
@@ -43,7 +44,10 @@ export const SearchField = () => {
             }
           }}
           value={fieldText}
-          onChange={(event) => setFieldText(event.target.value)}
+          onChange={(event) => {
+            console.log("Event: ", event.target)
+            setFieldText(event.target.value)
+          }}
         />
       )}
     />

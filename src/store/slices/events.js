@@ -421,18 +421,28 @@ export const eventsSlice = createSlice({
       });
 
       state.value = updateRsvp;
+    },
+    removeEvent: (state, action) => {
+      let updatedState = state.value.filter(
+        (event) => event.id !== action.payload.id
+      );
+
+      state.value = updatedState;
+    },
+    editEvent: (state, action) => {
+      let updatedState = state.value.map((event) => {
+        if (event.id !== action.payload.id) {
+          return event;
+        } else if (event.id === action.payload.id) {
+          return event;
+        }
+      });
+
+      state.value = updatedState;
     }
-    // removeEvent: (state, action) => {
-    //     let updatedState = state.value.map(event => {
-    //         if (event.id != action.payload.id) {
-    //             return {...event}
-    //         } else {
-    //             return;
-    //         }
-    //     })
-    // }
   }
 });
 
-export const { setActive, setRsvp, removeActive } = eventsSlice.actions;
+export const { setActive, setRsvp, removeActive, removeEvent, editEvent } =
+  eventsSlice.actions;
 export default eventsSlice.reducer;

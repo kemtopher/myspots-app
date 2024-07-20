@@ -1,6 +1,12 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { setActive, removeActive, setRsvp } from '../../store/slices/events';
+import {
+  setActive,
+  removeActive,
+  removeEvent,
+  setRsvp,
+  editEvent
+} from '../../store/slices/events';
 import {
   Accordion,
   AccordionSummary,
@@ -53,6 +59,9 @@ export const RideList = ({ nodes }) => {
     },
     checkedIcon: {
       color: 'var(--primary-40)'
+    },
+    dangerIcon: {
+      color: 'var(--red)'
     },
     details: {
       padding: '1em'
@@ -122,8 +131,7 @@ export const RideList = ({ nodes }) => {
                     aria-label="RSVP to Event"
                     disableFocusRipple
                     disableRipple
-                    onClick={(e) => {
-                      e.stopPropagation();
+                    onClick={() => {
                       dispatch(setRsvp(node));
                     }}
                   >
@@ -131,19 +139,25 @@ export const RideList = ({ nodes }) => {
                   </IconButton>
                   <IconButton
                     variant="contained"
-                    sx={classes.uncheckedIcon}
+                    sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
                     aria-label="Edit Event"
                     disableFocusRipple
                     disableRipple
+                    onClick={() => {
+                      dispatch(editEvent(node));
+                    }}
                   >
                     <Edit />
                   </IconButton>
                   <IconButton
                     variant="comtained"
-                    sx={classes.uncheckedIcon}
+                    sx={classes.dangerIcon}
                     aria-label="Delete Event"
                     disableFocusRipple
                     disableRipple
+                    onClick={() => {
+                      dispatch(removeEvent(node));
+                    }}
                   >
                     <Delete />
                   </IconButton>
