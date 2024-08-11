@@ -10,8 +10,7 @@ import { useSelector } from "react-redux";
 import './App.scss';
 import { RideActions } from './components/ride-actions/ride-actions';
 import { RideList } from './components/ride-list/ride-list';
-
-// const Map = lazy(() => import(webpackChunkName: 'Map', ))n
+// const Map = lazy(() => import(webpackChunkName: 'Map', ))
 
 export const App = ({
 	loading,
@@ -25,14 +24,14 @@ export const App = ({
 	
 	const events = useSelector(state => state.events.value);
 	const coords = useSelector(state => state.coordinates.current);
-
+  console.log("App reload: ");
 	return (
 		<div className="App" style={{height: '100vh'}}>
 			<Grid container spacing={0} sx={{height: '100%'}}>
 				<Grid item xs={12} md={8} sx={{height: '100%'}}>
 					<Grid container>
 						<Grid item xs={9}>
-							<SearchField />
+							{/* <SearchField /> */}
 						</Grid>
 						<Grid item xs={3}>
 							<RadiusSelect />

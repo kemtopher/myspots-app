@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setCurrent } from '../../store/slices/coordinates';
 
 export const AppWrapper = () => {
+  console.log("AppWrapper causing rerender...");
     const { loading, error, data } = useGeolocation();
     const dispatch = useDispatch();
 
