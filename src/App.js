@@ -41,15 +41,15 @@ export const App = ({ loading, error }) => {
     <div className="App" style={{ height: '100vh' }}>
       <Grid container spacing={0} sx={{ height: '100%' }}>
         <Grid item xs={12} md={8} sx={{ height: '100%' }}>
-          <Grid container>
+          {/* <Grid container>
             <Grid item xs={9}>
               <SearchField />
             </Grid>
             <Grid item xs={3}>
               <RadiusSelect />
             </Grid>
-          </Grid>
-          <Grid container sx={{ height: 'calc(100% - 60px)' }}>
+          </Grid> */}
+          <Grid container sx={{ height: '100%' }}>
             <Grid item xs={12}>
               <MapLoader loading={loading} error={error}>
                 <Map lon={coords[0]} lat={coords[1]} events={filteredEvents} />
