@@ -6,7 +6,6 @@ import './index.css';
 import './globals.css';
 import { AppWrapper } from './components/app-wrapper/app-wrapper';
 import reportWebVitals from './reportWebVitals';
-console.log("index.js rerendered");
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
