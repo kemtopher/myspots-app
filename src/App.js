@@ -9,7 +9,7 @@ import { RideActions } from './components/ride-actions/ride-actions';
 import { RideList } from './components/ride-list/ride-list';
 import './App.scss';
 
-// const Map = lazy(() => import(webpackChunkName: 'Map', ))n
+// const Map = lazy(() => import(webpackChunkName: 'Map', ));
 
 export const App = ({ loading, error }) => {
   const classes = {
