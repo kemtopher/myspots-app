@@ -10,7 +10,6 @@ export const Map = React.memo(({ lon, lat, events }) => {
     const map = useRef(null);
     const marker = useRef(null);
     const dispatch = useDispatch();
-    console.log("Map reload")
 
     useEffect(() => {
         if (map.current) {

@@ -5,7 +5,6 @@ export const useGeolocation = (options) => {
     const [error, setError] = useState();
     const [data, setData] = useState({});
 
-    console.log("useGeoLocation called");
     useEffect(() => {
         const successHandler = e => {
             setLoading(false)

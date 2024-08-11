@@ -24,8 +24,8 @@ export const App = ({
 	
 	const events = useSelector(state => state.events.value);
 	const coords = useSelector(state => state.coordinates.current);
-  console.log("App reload: ");
-	return (
+
+  return (
 		<div className="App" style={{height: '100vh'}}>
 			<Grid container spacing={0} sx={{height: '100%'}}>
 				<Grid item xs={12} md={8} sx={{height: '100%'}}>
