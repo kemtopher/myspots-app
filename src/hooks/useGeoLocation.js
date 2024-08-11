@@ -22,14 +22,6 @@ export const useGeolocation = (options) => {
             errorHandler,
             options
         );
-
-        const id = navigator.geolocation.watchPosition(
-            successHandler,
-            errorHandler,
-            options
-        );
-
-        return () => navigator.geolocation.clearWatch(id);
     }, [options])
 
     
