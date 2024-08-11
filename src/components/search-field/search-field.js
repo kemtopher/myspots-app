@@ -9,11 +9,9 @@ export const SearchField = () => {
   const [ fieldText, setFieldText ] = useState('');
   const [ locationsList, setLocationsList ] = useState([]);
   const dispatch = useDispatch();
-  console.log("SearchField called");
 
   useEffect(() => {
 		const getLocations = setTimeout(() => {
-      console.log("getLocations called")
 			fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${fieldText}.json?access_token=pk.eyJ1IjoiYXF1YXllIiwiYSI6ImNrN3NjdTdmczBkZmQzZnIyenZ1djR1dXkifQ.chRGR88GhxPG1Yk-2DDzqw`)
 			.then(res => res.json())
 			.then(data => {
