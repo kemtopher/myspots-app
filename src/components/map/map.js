@@ -14,8 +14,6 @@ export const Map = React.memo(
     const marker = useRef(null);
     const dispatch = useDispatch();
 
-    console.log('LL: ', lon, lat);
-
     useEffect(() => {
       if (map.current) {
         if (marker.current) {

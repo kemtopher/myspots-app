@@ -11,16 +11,16 @@ export const RideActions = ({ setEventsFilter, eventsFilter }) => {
       width: '100%',
       height: '56px',
       borderRadius: '0',
+      borderRight: '0px solid #fff',
 
       '&.Mui-disabled': {
         background: '#1565c0',
-        color: '#ffffff'
+        border: '0px solid #ffffff',
+        borderRight: '0px solid #ffffff !important',
+        color: '#ffffff',
+      },
     },
-    },
-    // '&.Mui-disabled:hover': { background:theme.palette.secondary.main },
   };
-
-  console.log(eventsFilter)
 
   return (
     <ButtonGroup
