@@ -411,9 +411,9 @@ export const eventsSlice = createSlice({
       let updateRsvp = state.value.map((event) => {
         if (event.id === action.payload.id) {
           if (event.rsvp) {
-            return { ...event, active: false };
+            return { ...event, rsvp: false };
           } else {
-            return { ...event, active: true };
+            return { ...event, rsvp: true };
           }
         } else {
           return { ...event };

@@ -132,10 +132,6 @@ export const RideList = ({ nodes }) => {
                     disableFocusRipple
                     disableRipple
                     onClick={() => {
-                      console.log("RSVP clicked")
-                      // running dispatch here onClick will cause a re-render of the ride card.
-                      // move this level of logic to the card
-                      // will have to maintain the state of active to avoid the close action
                       dispatch(setRsvp(node));
                     }}
                   >
