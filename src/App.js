@@ -60,7 +60,7 @@ export const App = ({ loading, error }) => {
         <Grid item xs={12} md={4} sx={classes.ridelist}>
           <Grid container sx={classes.ridelist}>
             <Grid item xs={12}>
-              <RideActions setEventsFilter={setEventsFilter} />
+              <RideActions eventsFilter={eventsFilter} setEventsFilter={setEventsFilter} />
             </Grid>
             <Grid item xs={12} sx={{ height: 'calc(100% - 60px)' }}>
               <RideList nodes={filteredEvents} />

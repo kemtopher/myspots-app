@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 
-export const RideActions = ({ setEventsFilter }) => {
+export const RideActions = ({ setEventsFilter, eventsFilter }) => {
   const styles = {
     actionContainer: {
       height: '56px',
@@ -10,9 +10,17 @@ export const RideActions = ({ setEventsFilter }) => {
     actionButton: {
       width: '100%',
       height: '56px',
-      borderRadius: '0'
-    }
+      borderRadius: '0',
+
+      '&.Mui-disabled': {
+        background: '#1565c0',
+        color: '#ffffff'
+    },
+    },
+    // '&.Mui-disabled:hover': { background:theme.palette.secondary.main },
   };
+
+  console.log(eventsFilter)
 
   return (
     <ButtonGroup
@@ -25,6 +33,7 @@ export const RideActions = ({ setEventsFilter }) => {
         variant="contained"
         fullWidth
         size="large"
+        disabled={eventsFilter === 'nearby'}
         disableElevation
         disableRipple
         aria-label="Edit Event"
@@ -37,6 +46,7 @@ export const RideActions = ({ setEventsFilter }) => {
         variant="contained"
         fullWidth
         size="large"
+        disabled={eventsFilter === 'rsvp'}
         disableElevation
         disableRipple
         destination="/rides/going"
@@ -49,6 +59,7 @@ export const RideActions = ({ setEventsFilter }) => {
         variant="contained"
         fullWidth
         size="large"
+        disabled={eventsFilter === 'hosting'}
         disableElevation
         disableRipple
         sx={styles.actionButton}
