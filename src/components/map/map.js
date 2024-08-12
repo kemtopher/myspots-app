@@ -34,14 +34,24 @@ export const Map = React.memo(
           zoom: 16
         });
 
-        var nav = new mapboxgl.NavigationControl({
+        const nav = new mapboxgl.NavigationControl({
           showZoom: true
         });
 
+        const geolocate = new mapboxgl.GeolocateControl({
+          positionOptions: {
+              enableHighAccuracy: true
+          },
+          trackUserLocation: true,
+          showUserHeading: true
+        });
+
         map.current.addControl(nav, 'top-left');
+        map.current.addControl(geolocate, 'top-left');
 
         map.current.on('load', () => {
           map.current.resize();
+          geolocate.trigger();
         });
       }
 
