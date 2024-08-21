@@ -3,21 +3,15 @@ import { useDispatch } from 'react-redux';
 import {
   setActive,
   removeActive,
-  removeEvent,
-  setRsvp,
-  editEvent
 } from '../../store/slices/events';
 import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  AccordionActions,
   Grid,
   Typography,
   Box,
-  IconButton
 } from '@mui/material';
-import { ExpandMore, ThumbUp, Delete, Edit } from '@mui/icons-material';
 import { RideCard } from '../ride-card/ride-card';
 import { CardDescription } from '../card-description/card-description';
 
@@ -31,10 +25,14 @@ export const RideList = ({ nodes }) => {
       boxShadow:
         '0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0)'
     },
+    activeAccordion: {
+      boxShadow:
+        '0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0)',
+      background: 'var(--light-10)'
+    },
     header: {
       padding: '16px',
       color: 'var(--light-40)'
-      // borderBottom: '1px solid rgba(224, 224, 224, 1)',
     },
     headerTitle: {
       fontSize: '0.875rem',
@@ -99,13 +97,12 @@ export const RideList = ({ nodes }) => {
           <>
             {nodes.map((node, index) => (
               <Accordion
-                expanded={node.active}
-                sx={classes.accordion}
+                expanded={true}
+                sx={node.active ? classes.activeAccordion : classes.accordion}
                 ref={(el) => (accordionEls.current[index] = el)}
                 key={node.id}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMore />}
                   aria-controls="panel1-content"
                   id="panel1-header"
                   sx={classes.removePadding}
@@ -116,52 +113,20 @@ export const RideList = ({ nodes }) => {
                       dispatch(setActive(node));
                     }
                   }}
+                  // onMouseEnter={() => {
+                  //   dispatch(setActive(node))
+                  //   console.log("Node info: ", node)
+                  // }}
+                  // onMouseLeave={() => {
+                  //   dispatch(removeActive(node));
+                  // }}
                 >
-                  <RideCard key={index} data={node} />
+                  <RideCard key={index} data={node} node={node} />
                 </AccordionSummary>
 
                 <AccordionDetails sx={classes.details}>
                   <CardDescription data={node} />
                 </AccordionDetails>
-
-                <AccordionActions>
-                  <IconButton
-                    variant="contained"
-                    sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
-                    aria-label="RSVP to Event"
-                    disableFocusRipple
-                    disableRipple
-                    onClick={() => {
-                      dispatch(setRsvp(node));
-                    }}
-                  >
-                    <ThumbUp />
-                  </IconButton>
-                  <IconButton
-                    variant="contained"
-                    sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
-                    aria-label="Edit Event"
-                    disableFocusRipple
-                    disableRipple
-                    onClick={() => {
-                      dispatch(editEvent(node));
-                    }}
-                  >
-                    <Edit />
-                  </IconButton>
-                  <IconButton
-                    variant="comtained"
-                    sx={classes.dangerIcon}
-                    aria-label="Delete Event"
-                    disableFocusRipple
-                    disableRipple
-                    onClick={() => {
-                      dispatch(removeEvent(node));
-                    }}
-                  >
-                    <Delete />
-                  </IconButton>
-                </AccordionActions>
               </Accordion>
             ))}
           </>

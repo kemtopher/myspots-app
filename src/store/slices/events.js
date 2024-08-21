@@ -443,6 +443,6 @@ export const eventsSlice = createSlice({
   }
 });
 
-export const { setActive, setRsvp, removeActive, removeEvent, editEvent } =
+export const { setActive, removeActive, setRsvp, removeEvent, editEvent } =
   eventsSlice.actions;
 export default eventsSlice.reducer;

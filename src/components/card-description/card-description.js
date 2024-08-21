@@ -17,7 +17,7 @@ export const CardDescription = ({ data }) => {
   return (
     <Grid container sx={classes.card}>
       <Grid item xs={12}>
-        {data.description}
+        {data.description.substring(0, 144)}
       </Grid>
     </Grid>
   );

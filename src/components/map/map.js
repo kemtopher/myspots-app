@@ -83,6 +83,7 @@ export const Map = React.memo(
             dispatch(removeActive(event));
           } else {
             dispatch(setActive(event));
+            console.log("HEH", event)
           }
         });
 

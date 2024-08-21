@@ -1,10 +1,22 @@
 import React from 'react';
 import { useFormatTime } from '../../hooks/useFormatTime';
 import { useFormatDate } from '../../hooks/useFormatDate';
-import { Typography, Grid } from '@mui/material';
 import { Place } from '@mui/icons-material';
+import { ThumbUp, Delete } from '@mui/icons-material';
+import {
+  removeEvent,
+  setRsvp,
+} from '../../store/slices/events';
+import {
+  AccordionActions,
+  Grid,
+  Typography,
+  IconButton
+} from '@mui/material';
+import { useDispatch } from 'react-redux';
 
-export const RideCard = ({ data }) => {
+export const RideCard = ({ data, node }) => {
+  const dispatch = useDispatch();
   const classes = {
     card: {
       width: '100%',
@@ -71,6 +83,47 @@ export const RideCard = ({ data }) => {
         <Typography component="h2" sx={classes.secondaryText}>
           {useFormatDate(data.datetime)}
         </Typography>
+      </Grid>
+
+      <Grid item xs={3} sx={classes.actions}>
+        <AccordionActions>
+          <IconButton
+            variant="contained"
+            sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
+            aria-label="RSVP to Event"
+            disableFocusRipple
+            disableRipple
+            onClick={() => {
+              dispatch(setRsvp(node));
+            }}
+          >
+            <ThumbUp />
+          </IconButton>
+          {/* <IconButton
+            variant="contained"
+            sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
+            aria-label="Edit Event"
+            disableFocusRipple
+            disableRipple
+            onClick={() => {
+              dispatch(editEvent(node));
+            }}
+          >
+            <Edit />
+          </IconButton> */}
+          <IconButton
+            variant="comtained"
+            sx={classes.dangerIcon}
+            aria-label="Delete Event"
+            disableFocusRipple
+            disableRipple
+            onClick={() => {
+              dispatch(removeEvent(node));
+            }}
+          >
+            <Delete />
+          </IconButton>
+        </AccordionActions>
       </Grid>
     </Grid>
   );
