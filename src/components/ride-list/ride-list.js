@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import {
   setActive,
   removeActive,
+  setFocused,
+  clearFocused
 } from '../../store/slices/events';
 import {
   Accordion,
@@ -113,13 +115,12 @@ export const RideList = ({ nodes }) => {
                       dispatch(setActive(node));
                     }
                   }}
-                  // onMouseEnter={() => {
-                  //   dispatch(setActive(node))
-                  //   console.log("Node info: ", node)
-                  // }}
-                  // onMouseLeave={() => {
-                  //   dispatch(removeActive(node));
-                  // }}
+                  onMouseEnter={() => {
+                    dispatch(setFocused(node))
+                  }}
+                  onMouseLeave={() => {
+                    dispatch(clearFocused());
+                  }}
                 >
                   <RideCard key={index} data={node} node={node} />
                 </AccordionSummary>

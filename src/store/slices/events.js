@@ -4,6 +4,7 @@ const initialState = {
   value: [
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '101 Peachtree St',
       creator: {
@@ -21,6 +22,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '102 Peachtree St',
       creator: {
@@ -38,6 +40,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '103 Peachtree St',
       creator: {
@@ -55,6 +58,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '104 Peachtree St',
       creator: {
@@ -72,6 +76,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '105 Peachtree St',
       creator: {
@@ -89,6 +94,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '106 Peachtree St',
       creator: {
@@ -106,6 +112,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '107 Peachtree St',
       creator: {
@@ -123,6 +130,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '108 Peachtree St',
       creator: {
@@ -140,6 +148,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '109 Peachtree St',
       creator: {
@@ -157,6 +166,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '110 Peachtree St',
       creator: {
@@ -174,6 +184,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '111 Peachtree St',
       creator: {
@@ -191,6 +202,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '112 Peachtree St',
       creator: {
@@ -208,6 +220,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '113 Peachtree St',
       creator: {
@@ -225,6 +238,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '114 Peachtree St',
       creator: {
@@ -242,6 +256,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '115 Peachtree St',
       creator: {
@@ -259,6 +274,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '116 Peachtree St',
       creator: {
@@ -276,6 +292,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '117 Peachtree St',
       creator: {
@@ -293,6 +310,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: true,
       address: '118 Peachtree St',
       creator: {
@@ -310,6 +328,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '119 Peachtree St',
       creator: {
@@ -327,6 +346,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '120 Peachtree St',
       creator: {
@@ -344,6 +364,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '121 Peachtree St',
       creator: {
@@ -361,6 +382,7 @@ const initialState = {
     },
     {
       active: false,
+      focused: false,
       rsvp: false,
       address: '122 Peachtree St',
       creator: {
@@ -439,10 +461,31 @@ export const eventsSlice = createSlice({
       });
 
       state.value = updatedState;
+    },
+    setFocused: (state, action) => {
+      let focusedState = state.value.map((event) => {
+        if (event.id !== action.payload.id) {
+          if (event.focused) {
+            return { ...event, focused: false }
+          }
+
+          return event;
+        }
+
+        return { ...event, focused: true }
+      })
+
+      state.value = focusedState;
+    },
+    clearFocused: (state, action) => {
+      let clearState = state.value.map((event) => {
+        return {...event, focused: false}
+      })
+
+      state.value = clearState;
     }
   }
 });
 
-export const { setActive, removeActive, setRsvp, removeEvent, editEvent } =
-  eventsSlice.actions;
+export const { setActive, removeActive, setRsvp, removeEvent, editEvent, setFocused, clearFocused } = eventsSlice.actions;
 export default eventsSlice.reducer;

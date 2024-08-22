@@ -63,7 +63,8 @@ export const Map = React.memo(
       markersGroup = [];
 
       events.forEach((event) => {
-        let markerColor;
+        let markerColor,
+          scale
 
         if (event.active) {
           markerColor = '#FF0000';
@@ -71,7 +72,13 @@ export const Map = React.memo(
           markerColor = '#1565c0';
         }
 
-        let eventMarker = new mapboxgl.Marker({ color: markerColor })
+        if (event.focused) {
+          scale = 1.25
+        } else {
+          scale = 1
+        }
+
+        let eventMarker = new mapboxgl.Marker({ color: markerColor, scale: scale })
           .setLngLat([
             event.location.coordinates[0],
             event.location.coordinates[1]
@@ -83,7 +90,6 @@ export const Map = React.memo(
             dispatch(removeActive(event));
           } else {
             dispatch(setActive(event));
-            console.log("HEH", event)
           }
         });
 
