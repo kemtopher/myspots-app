@@ -444,6 +444,9 @@ export const eventsSlice = createSlice({
 
       state.value = updateRsvp;
     },
+    createEvent: (state, action) => {
+      state.value = [...state.value, action.payload];
+    },
     removeEvent: (state, action) => {
       let updatedState = state.value.filter(
         (event) => event.id !== action.payload.id
