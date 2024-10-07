@@ -74,7 +74,7 @@ export const RideList = ({ nodes }) => {
 
   return (
     <>
-      <section>
+      {/* <section>
         <Grid container sx={classes.header} display="flex">
           <Grid item xs={5}>
             <Typography variant="h3" align={'left'} sx={classes.headerTitle}>
@@ -92,7 +92,7 @@ export const RideList = ({ nodes }) => {
             </Typography>
           </Grid>
         </Grid>
-      </section>
+      </section> */}
 
       <section id="ride-list" ref={rideList} style={classes.scrolllist}>
         {nodes.length ? (

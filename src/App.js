@@ -24,16 +24,21 @@ export const App = ({ loading, error }) => {
   const [filteredEvents, setFilteredEvents] = useState([]);
 
   useEffect(() => {
-    if (eventsFilter === null || eventsFilter === 'nearby') {
+    if (eventsFilter === null || eventsFilter === 'show-all') {
       setFilteredEvents(events);
-    } else if (eventsFilter === 'rsvp') {
-      const rsvpEvents = events.filter((event) => event.rsvp === true);
+    } 
+    // else if (eventsFilter === 'rsvp') {
+    //   const rsvpEvents = events.filter((event) => event.rsvp === true);
 
-      setFilteredEvents(rsvpEvents);
-    } else if (eventsFilter === 'hosting') {
+    //   setFilteredEvents(rsvpEvents);
+    // } 
+    else if (eventsFilter === 'add-spot') {
       const hostingEvents = events.filter((event) => event.hosting === true);
 
       setFilteredEvents(hostingEvents);
+    }
+    else {
+      setFilteredEvents(events);
     }
   }, [events, eventsFilter]);
 
