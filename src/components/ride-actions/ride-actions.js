@@ -33,16 +33,16 @@ export const RideActions = ({ setEventsFilter, eventsFilter }) => {
         variant="contained"
         fullWidth
         size="large"
-        disabled={eventsFilter === 'nearby'}
+        disabled={eventsFilter === 'show-all'}
         disableElevation
         disableRipple
         aria-label="Edit Event"
         sx={styles.actionButton}
-        onClick={() => setEventsFilter('nearby')}
+        onClick={() => setEventsFilter('show-all')}
       >
-        Nearby
+        Show All
       </Button>
-      <Button
+      {/* <Button
         variant="contained"
         fullWidth
         size="large"
@@ -54,18 +54,18 @@ export const RideActions = ({ setEventsFilter, eventsFilter }) => {
         onClick={() => setEventsFilter('rsvp')}
       >
         RSVP'd
-      </Button>
+      </Button> */}
       <Button
         variant="contained"
         fullWidth
         size="large"
-        disabled={eventsFilter === 'hosting'}
+        disabled={eventsFilter === 'add-spot'}
         disableElevation
         disableRipple
         sx={styles.actionButton}
-        onClick={() => setEventsFilter('hosting')}
+        onClick={() => setEventsFilter('add-spot')}
       >
-        Hosting
+        Add Spot
       </Button>
     </ButtonGroup>
   );

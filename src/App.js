@@ -27,17 +27,21 @@ export const App = ({ loading, error }) => {
 
   useEffect(() => {
     if (eventsFilter === null || eventsFilter === 'show-all') {
-      setShowForm(false);
       setFilteredEvents(events);
-    } else if (eventsFilter === 'rsvp') {
-      const rsvpEvents = events.filter((event) => event.rsvp === true);
+    } 
+    // else if (eventsFilter === 'rsvp') {
+    //   const rsvpEvents = events.filter((event) => event.rsvp === true);
 
-      setFilteredEvents(rsvpEvents);
-    } else if (eventsFilter === 'create-spot') {
-      // const createSpot = events.filter((event) => event.hosting === true);
+    //   setFilteredEvents(rsvpEvents);
+    // } 
+    else if (eventsFilter === 'add-spot') {
+      const hostingEvents = events.filter((event) => event.hosting === true);
 
       setFilteredEvents([]);
       setShowForm(true);
+    }
+    else {
+      setFilteredEvents(events);
     }
   }, [events, eventsFilter]);
 
