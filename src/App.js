@@ -7,6 +7,7 @@ import { RadiusSelect } from './components/radius-select/radius-select';
 import { useSelector } from 'react-redux';
 import { RideActions } from './components/ride-actions/ride-actions';
 import { RideList } from './components/ride-list/ride-list';
+import { SpotForm } from './components/spot-form/spot-form';
 import './App.scss';
 
 // const Map = lazy(() => import(webpackChunkName: 'Map', ));
@@ -21,19 +22,22 @@ export const App = ({ loading, error }) => {
   const events = useSelector((state) => state.events.value);
   const coords = useSelector((state) => state.coordinates.current);
   const [eventsFilter, setEventsFilter] = useState(null);
+  const [showForm, setShowForm] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState([]);
 
   useEffect(() => {
-    if (eventsFilter === null || eventsFilter === 'nearby') {
+    if (eventsFilter === null || eventsFilter === 'show-all') {
+      setShowForm(false);
       setFilteredEvents(events);
     } else if (eventsFilter === 'rsvp') {
       const rsvpEvents = events.filter((event) => event.rsvp === true);
 
       setFilteredEvents(rsvpEvents);
-    } else if (eventsFilter === 'hosting') {
-      const hostingEvents = events.filter((event) => event.hosting === true);
+    } else if (eventsFilter === 'create-spot') {
+      // const createSpot = events.filter((event) => event.hosting === true);
 
-      setFilteredEvents(hostingEvents);
+      setFilteredEvents([]);
+      setShowForm(true);
     }
   }, [events, eventsFilter]);
 
@@ -63,7 +67,7 @@ export const App = ({ loading, error }) => {
               <RideActions eventsFilter={eventsFilter} setEventsFilter={setEventsFilter} />
             </Grid>
             <Grid item xs={12} sx={{ height: 'calc(100% - 60px)' }}>
-              <RideList nodes={filteredEvents} />
+              { showForm ? <SpotForm /> : <RideList nodes={filteredEvents} /> }
             </Grid>
           </Grid>
         </Grid>
