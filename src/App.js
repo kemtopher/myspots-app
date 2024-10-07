@@ -28,6 +28,7 @@ export const App = ({ loading, error }) => {
   useEffect(() => {
     if (eventsFilter === null || eventsFilter === 'show-all') {
       setFilteredEvents(events);
+      setShowForm(false);
     } 
     // else if (eventsFilter === 'rsvp') {
     //   const rsvpEvents = events.filter((event) => event.rsvp === true);
@@ -37,11 +38,13 @@ export const App = ({ loading, error }) => {
     else if (eventsFilter === 'add-spot') {
       const hostingEvents = events.filter((event) => event.hosting === true);
 
-      setFilteredEvents([]);
+      // setFilteredEvents([]);
+      setFilteredEvents(events);
       setShowForm(true);
     }
     else {
       setFilteredEvents(events);
+      setShowForm(false);
     }
   }, [events, eventsFilter]);
 
