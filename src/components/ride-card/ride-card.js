@@ -1,17 +1,17 @@
 import React from 'react';
-import { useFormatTime } from '../../hooks/useFormatTime';
-import { useFormatDate } from '../../hooks/useFormatDate';
 import { Place } from '@mui/icons-material';
-import { ThumbUp, Delete } from '@mui/icons-material';
+import { ThumbUp, Delete, Edit } from '@mui/icons-material';
 import {
   removeEvent,
   setRsvp,
+  editEvent
 } from '../../store/slices/events';
 import {
   AccordionActions,
   Grid,
   Typography,
-  IconButton
+  IconButton,
+  Rating
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
@@ -65,65 +65,59 @@ export const RideCard = ({ data, node }) => {
 
   return (
     <Grid container sx={classes.card}>
-      <Grid item xs={5}>
-        <Typography component="h2" sx={classes.rideTitle}>
-          {data.name}
-        </Typography>
+      <Grid container item rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item xs={9}>
+          <Typography component="h2" sx={classes.rideTitle}>
+            {data.name}
+          </Typography>
 
-        <Typography component="h2" sx={classes.ridePlace}>
-          <Place fontSize="medium" />
-          {data.address}
-        </Typography>
-      </Grid>
+          <Typography component="h2" sx={classes.ridePlace}>
+            <Place fontSize="medium" />
+            {data.address}
+          </Typography>
+        </Grid>
 
-      <Grid item xs={4} sx={classes.rideTime}>
-        <Typography component="h2" sx={classes.secondaryText}>
-          {useFormatTime(data.datetime)}
-        </Typography>
-        <Typography component="h2" sx={classes.secondaryText}>
-          {useFormatDate(data.datetime)}
-        </Typography>
-      </Grid>
-
-      <Grid item xs={3} sx={classes.actions}>
-        <AccordionActions>
-          <IconButton
-            variant="contained"
-            sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
-            aria-label="RSVP to Event"
-            disableFocusRipple
-            disableRipple
-            onClick={() => {
-              dispatch(setRsvp(node));
-            }}
-          >
-            <ThumbUp />
-          </IconButton>
-          {/* <IconButton
-            variant="contained"
-            sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
-            aria-label="Edit Event"
-            disableFocusRipple
-            disableRipple
-            onClick={() => {
-              dispatch(editEvent(node));
-            }}
-          >
-            <Edit />
-          </IconButton> */}
-          <IconButton
-            variant="comtained"
-            sx={classes.dangerIcon}
-            aria-label="Delete Event"
-            disableFocusRipple
-            disableRipple
-            onClick={() => {
-              dispatch(removeEvent(node));
-            }}
-          >
-            <Delete />
-          </IconButton>
-        </AccordionActions>
+        <Grid item xs={3} sx={classes.actions}>
+          <Rating name="read-only" value={3} precision={0.5} size="small" readOnly />
+          <AccordionActions>
+            {/* <IconButton
+              variant="contained"
+              sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
+              aria-label="RSVP to Event"
+              disableFocusRipple
+              disableRipple
+              onClick={() => {
+                dispatch(setRsvp(node));
+              }}
+            >
+              <ThumbUp />
+            </IconButton> */}
+            <IconButton
+              variant="contained"
+              sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
+              aria-label="Edit Event"
+              disableFocusRipple
+              disableRipple
+              onClick={() => {
+                dispatch(editEvent(node));
+              }}
+            >
+              <Edit />
+            </IconButton>
+            <IconButton
+              variant="comtained"
+              sx={classes.dangerIcon}
+              aria-label="Delete Event"
+              disableFocusRipple
+              disableRipple
+              onClick={() => {
+                dispatch(removeEvent(node));
+              }}
+            >
+              <Delete />
+            </IconButton>
+          </AccordionActions>
+        </Grid>
       </Grid>
     </Grid>
   );

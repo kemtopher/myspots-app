@@ -16,9 +16,9 @@ const initialState = {
       location: {
         coordinates: [-84.388, 33.749]
       },
-      name: 'Object 1',
+      name: '97 Estoria',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        'A hipster hangout serving beer & eclectic food, along with live music nights, in a bare bones space.'
     },
     {
       active: false,
@@ -34,9 +34,9 @@ const initialState = {
       location: {
         coordinates: [-84.32, 33.8]
       },
-      name: 'Object 2',
+      name: "Sister Louisa's Church of the Living Room and Ping Pong Emporium",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "Sister Louisa's Church of the Living Room and Ping Pong Emporium, or simply Church, is a bar on Edgewood Avenue in the Old Fourth Ward of Atlanta, Georgia, in the United States. It is owned by Grant Henry. Edgewood Avenue in the Old Fourth Ward and 'Church' bar."
     },
     {
       active: false,
@@ -52,9 +52,9 @@ const initialState = {
       location: {
         coordinates: [-84.39, 33.79]
       },
-      name: 'Object 3',
+      name: 'Park Grounds',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        'Dog-friendly spot for specialty coffee drinks & light bites including breakfast served all day.'
     },
     {
       active: false,
@@ -70,9 +70,9 @@ const initialState = {
       location: {
         coordinates: [-84.35, 33.76]
       },
-      name: 'Object 4',
+      name: 'North Highland Bakery',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "I could definitely tell it was a popular place. It was packed, just like I remembered it, but we were able to get seated pretty quickly. We ordered the half stack of the sweet potato pancakes. They were rich and fluffy, without being too sweet. Delicious! We also each ordered the fried chicken benedict, which was amazing. A homemade biscuit topped flaky fried chicken and a plump poached egg, topped with rich, homemade jalapeño cheddar sauce. And with food this perfect, it was still the people who work there that make this place what it is. This, is the perfect brunch experience."
     },
     {
       active: false,
@@ -88,9 +88,9 @@ const initialState = {
       location: {
         coordinates: [-84.36, 33.77]
       },
-      name: 'Object 5',
+      name: "Alon's Bakery",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "Alon's Bakery & Market is an award-winning restaurant, providing high-quality artisan baked goods and cuisine since 1992. The namesake of Executive Chef/Owner Alon Balshan, Alon's Bakery & Market has two locations in Morningside and Phipps Plaza with catering options available across metro Atlanta. Offering customers a unique atmosphere that emulates the authentic feel of a European market, Alon's Bakery & Market is known for its high-quality, made-from-scratch selection of baked breads, European-style cakes, handmade pastries, gourmet sandwiches, freshly prepared foods, fine cheeses, exquisite chocolates and more."
     },
     {
       active: false,
@@ -106,9 +106,9 @@ const initialState = {
       location: {
         coordinates: [-84.37, 33.78]
       },
-      name: 'Object 6',
+      name: 'The Albert',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "Casual watering hole with brick decor dishes up pub grub including a variety of specialty hot dogs."
     },
     {
       active: false,
@@ -124,9 +124,9 @@ const initialState = {
       location: {
         coordinates: [-84.38, 33.74]
       },
-      name: 'Object 7',
+      name: 'Victory Sandwich Bar',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "I'd gladly pay $10 for the Beeter (beet “pastrami,” white kimchi, and Thai pepper mayo) and probably more for the Han Cholo (chorizo, Cotija cheese, tomatillo salsa) at this ATL favorite. But at $4 apiece (chips included), this has to be the greatest meal deal in America."
     },
     {
       active: false,
@@ -142,9 +142,9 @@ const initialState = {
       location: {
         coordinates: [-84.33, 33.75]
       },
-      name: 'Object 8',
+      name: 'Strangers In Paradise',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "The 1,200-square-foot space features two small areas set up like living rooms and a bar that seats 24. Pink leather couches offer space to lounge with plantation shutters separating Strangers in Paradise from the rest of the food hall. Hundreds of old-school postcards function as wallpaper behind the bar, surrounding a neon-lit alligator sign. Need another reminder you’ve left the Peach State? Flamingo motifs abound, including in the form of a ceramic mug serving the “Pink Flamingo” cocktail (prosecco, aperol, watermelon nectar, and lemon). Plants surround the space, and a garage door opens onto a covered patio with a ramp to the BeltLine. The decor is thrifted, much of it hand-picked by Lennox, with souvenir cups lining the walls. Expect an upbeat yet nostalgic soundtrack featuring 30 hours of curated ’80s, classic rock, pop, new wave, and the occasional reggae and Harry Belafonte. Old Florida indeed."
     },
     {
       active: false,
@@ -160,9 +160,9 @@ const initialState = {
       location: {
         coordinates: [-84.34, 33.76]
       },
-      name: 'Object 9',
+      name: 'Monday Night Garage - Westside Breweries',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "Monday Night Brewing's home for barrel aged and sour beers, with several fresh, local craft beer on tap. Located in Atlanta's historic West End."
     },
     {
       active: false,
@@ -178,9 +178,9 @@ const initialState = {
       location: {
         coordinates: [-84.35, 33.77]
       },
-      name: 'Object 10',
+      name: 'Bocca Lupo',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        "BoccaLupo is a bustling neighborhood restaurant located in Inman Park. We specialize in handmade and extruded pasta dishes with an eye on seasonality and where it comes from. Chef Bruce Logue and his team are passionate about questioning what is considered Italian-American cooking. With a casual vibe, genuine service and a talented bar team BoccaLupo continues to be an Atlanta must."
     },
     {
       active: false,
@@ -196,7 +196,7 @@ const initialState = {
       location: {
         coordinates: [-84.36, 33.78]
       },
-      name: 'Object 11',
+      name: 'A Mano',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -214,7 +214,7 @@ const initialState = {
       location: {
         coordinates: [-84.37, 33.79]
       },
-      name: 'Object 12',
+      name: 'Joystick Gamebar',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -232,7 +232,7 @@ const initialState = {
       location: {
         coordinates: [-84.38, 33.8]
       },
-      name: 'Object 13',
+      name: 'Mombo Zombie',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -250,7 +250,7 @@ const initialState = {
       location: {
         coordinates: [-84.39, 33.81]
       },
-      name: 'Object 14',
+      name: 'Grindhouse Killer Burgers',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -268,7 +268,7 @@ const initialState = {
       location: {
         coordinates: [-84.4, 33.82]
       },
-      name: 'Object 15',
+      name: 'Beetlecat',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -286,7 +286,7 @@ const initialState = {
       location: {
         coordinates: [-84.41, 33.83]
       },
-      name: 'Object 16',
+      name: "Manuel's Tavern",
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -304,7 +304,7 @@ const initialState = {
       location: {
         coordinates: [-84.42, 33.84]
       },
-      name: 'Object 17',
+      name: 'Breaker Breaker',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -322,7 +322,7 @@ const initialState = {
       location: {
         coordinates: [-84.43, 33.85]
       },
-      name: 'Object 18',
+      name: "Hawker's Asian Street Food",
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     },
@@ -340,9 +340,9 @@ const initialState = {
       location: {
         coordinates: [-84.44, 33.86]
       },
-      name: 'Object 19',
+      name: 'Quôć Húớng',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        'Vietnamese banh mi sandwiches plus pho noodle soups, bubble tea & smoothies from a quick-serve spot.'
     },
     {
       active: false,
@@ -358,9 +358,9 @@ const initialState = {
       location: {
         coordinates: [-84.45, 33.87]
       },
-      name: 'Object 20',
+      name: 'Northern China Eatery',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        'Mellow outpost with Asian accents, doling out dumplings, hot pot dishes & traditional Chinese fare.'
     },
     {
       active: false,
@@ -376,9 +376,9 @@ const initialState = {
       location: {
         coordinates: [-84.46, 33.88]
       },
-      name: 'Object 21',
+      name: 'Mamak',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur aliquet quam id dui posuere blandit. Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+        'Vibrant, cozy cafe serving Malaysian curries, noodles & roti canai inspired by street-food stalls.'
     },
     {
       active: false,
