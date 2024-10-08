@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrent } from '../../store/slices/coordinates';
 
 export const SearchField = () => {
   const [fieldText, setFieldText] = useState('');
   const [locationsList, setLocationsList] = useState([]);
   const dispatch = useDispatch();
+  const currentCoords = useSelector(state => state.coordinates.current)
 
   useEffect(() => {
     const getLocations = setTimeout(() => {
@@ -29,15 +30,16 @@ export const SearchField = () => {
       options={locationsList}
       getOptionLabel={(option) => option.place_name || ''}
       onChange={(event, value) => {
+        if (!value?.center) return;
+
         if (value.center !== null) {
-          console.log("value.center: ", value.center)
           dispatch(setCurrent([value.center[0], value.center[1]]));
         }
       }}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Location"
+          label="Search for location"
           sx={{
             '& .MuiOutlinedInput-root': {
               borderRadius: '0px'
@@ -45,7 +47,6 @@ export const SearchField = () => {
           }}
           value={fieldText}
           onChange={(event) => {
-            console.log("Event: ", event.target)
             setFieldText(event.target.value)
           }}
         />

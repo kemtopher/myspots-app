@@ -63,7 +63,7 @@ export const App = ({ loading, error }) => {
           <Grid container sx={{ height: '100%' }}>
             <Grid item xs={12}>
               <MapLoader loading={loading} error={error}>
-                <Map lon={coords[0]} lat={coords[1]} events={filteredEvents} />
+                <Map events={filteredEvents} />
               </MapLoader>
             </Grid>
           </Grid>

@@ -14,7 +14,7 @@ const initialState = {
       datetime: '2025-06-30T12:00:00Z',
       id: '1',
       location: {
-        coordinates: [-84.388, 33.749]
+        coordinates: [-84.363384,33.752141]
       },
       name: '97 Estoria',
       description:
@@ -405,6 +405,27 @@ export const eventsSlice = createSlice({
   name: 'events',
   initialState,
   reducers: {
+    createEvent: (state, action) => {
+      state.value = [...state.value, action.payload];
+    },
+    removeEvent: (state, action) => {
+      let updatedState = state.value.filter(
+        (event) => event.id !== action.payload.id
+      );
+
+      state.value = updatedState;
+    },
+    editEvent: (state, action) => {
+      let updatedState = state.value.map((event) => {
+        if (event.id !== action.payload.id) {
+          return event;
+        } else if (event.id === action.payload.id) {
+          return event;
+        }
+      });
+
+      state.value = updatedState;
+    },
     setActive: (state, action) => {
       let updatedState = state.value.map((event) => {
         if (event.id === action.payload.id) {
@@ -444,27 +465,6 @@ export const eventsSlice = createSlice({
 
       state.value = updateRsvp;
     },
-    createEvent: (state, action) => {
-      state.value = [...state.value, action.payload];
-    },
-    removeEvent: (state, action) => {
-      let updatedState = state.value.filter(
-        (event) => event.id !== action.payload.id
-      );
-
-      state.value = updatedState;
-    },
-    editEvent: (state, action) => {
-      let updatedState = state.value.map((event) => {
-        if (event.id !== action.payload.id) {
-          return event;
-        } else if (event.id === action.payload.id) {
-          return event;
-        }
-      });
-
-      state.value = updatedState;
-    },
     setFocused: (state, action) => {
       let focusedState = state.value.map((event) => {
         if (event.id !== action.payload.id) {
@@ -490,5 +490,5 @@ export const eventsSlice = createSlice({
   }
 });
 
-export const { setActive, removeActive, setRsvp, removeEvent, editEvent, setFocused, clearFocused } = eventsSlice.actions;
+export const { createEvent, removeEvent, editEvent, setActive, removeActive, setRsvp, setFocused, clearFocused } = eventsSlice.actions;
 export default eventsSlice.reducer;
