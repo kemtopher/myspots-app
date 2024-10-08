@@ -10,10 +10,7 @@ import { useSelector } from 'react-redux';
 
 
 export const SpotForm = () => {
-    const [formData, setFormData ] = useState(() => {
-        const storedData = localStorage.getItem('formData');
-        return storedData ? JSON.parse(storedData) : {};
-    });
+    const [formData, setFormData] = useState({})
     const locationInfo = useSelector(state => state.searchLocation.location)
 
     const classes = {
@@ -35,10 +32,6 @@ export const SpotForm = () => {
         });
     };
 
-    useEffect(() => {
-         localStorage.setItem('formData', JSON.stringify(formData));
-    }, [formData]);
-
     return (
         <>
             <Grid sx={classes.formContainer} container spacing={4}>
@@ -57,11 +50,11 @@ export const SpotForm = () => {
                 <Grid container item xs={12} spacing={2}>
                     <Grid item xs={12}>
                         <TextField 
-                            value={locationInfo.name} 
+                            value={ formData.name ||locationInfo.name} 
                             onChange={handleChange}
                             sx={classes.formField} 
                             label={'Name'} 
-                            name='Name'
+                            name='name'
                             id="margin-normal" 
                             margin="dense" 
                             fullWidth 
@@ -70,11 +63,11 @@ export const SpotForm = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField 
-                            value={locationInfo.address} 
+                            value={ formData.address ||locationInfo.address} 
                             onChange={handleChange}
                             sx={classes.formField} 
                             label={'Location'} 
-                            name='Location'
+                            name='location'
                             id="margin-normal" 
                             margin="dense" 
                             fullWidth 
@@ -83,11 +76,11 @@ export const SpotForm = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField 
-                            value={ locationInfo.description } 
+                            value={ formData.description || locationInfo.description } 
                             onChange={ handleChange }
                             sx={ classes.formField } 
                             label={'Description'} 
-                            name='Description'
+                            name='description'
                             id="margin-normal" 
                             margin="dense" 
                             fullWidth 
