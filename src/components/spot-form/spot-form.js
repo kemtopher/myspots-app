@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Grid,
     TextField,
     Typography,
-    FormControl,
-    InputLabel,
-    FormHelperText,
-    Input
 } from '@mui/material';
 
 
 export const SpotForm = () => {
+    const [formData, setFormData ] = useState({});
     const classes = {
         formHeader: {
             marginBottom: '2em'
@@ -22,6 +19,18 @@ export const SpotForm = () => {
             width: '100%'
         }
     }
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        });
+    };
+
+    useEffect(() => {
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }, [formData]);
+
     return (
         <>
             <Grid sx={classes.formContainer} container xs={12}>
@@ -30,13 +39,40 @@ export const SpotForm = () => {
                     <Typography variant="p" gutterBottom>Share a Spot to your list for others to see!</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField sx={classes.formField} label={'Name'} id="margin-normal" margin="dense" fullwidth required />
+                    <TextField 
+                        value={formData.name} 
+                        onChange={handleChange}
+                        sx={classes.formField} 
+                        label={'Name'} 
+                        name='Name'
+                        id="margin-normal" 
+                        margin="dense" 
+                        fullwidth required 
+                    />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField sx={classes.formField} label={'Location'} id="margin-normal" margin="dense" fullwidth required />
+                    <TextField 
+                        value={formData.location} 
+                        onChange={handleChange}
+                        sx={classes.formField} 
+                        label={'Location'} 
+                        name='Location'
+                        id="margin-normal" 
+                        margin="dense" 
+                        fullwidth required 
+                    />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField sx={classes.formField} label={'Description'} id="margin-normal" margin="dense" fullwidth />
+                    <TextField 
+                        value={ formData.description } 
+                        onChange={ handleChange }
+                        sx={ classes.formField } 
+                        label={'Description'} 
+                        name='Description'
+                        id="margin-normal" 
+                        margin="dense" 
+                        fullwidth 
+                    />
                 </Grid>
             </Grid>
         </>
