@@ -7,7 +7,11 @@ import {
 
 
 export const SpotForm = () => {
-    const [formData, setFormData ] = useState({});
+    const [formData, setFormData ] = useState(() => {
+        const storedData = localStorage.getItem('formData');
+        return storedData ? JSON.parse(storedData) : {};
+    });
+
     const classes = {
         formHeader: {
             marginBottom: '2em'
@@ -28,7 +32,7 @@ export const SpotForm = () => {
     };
 
     useEffect(() => {
-        localStorage.setItem('formData', JSON.stringify(formData));
+         localStorage.setItem('formData', JSON.stringify(formData));
     }, [formData]);
 
     return (
@@ -40,7 +44,7 @@ export const SpotForm = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField 
-                        value={formData.name} 
+                        value={formData.Name} 
                         onChange={handleChange}
                         sx={classes.formField} 
                         label={'Name'} 
@@ -52,7 +56,7 @@ export const SpotForm = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField 
-                        value={formData.location} 
+                        value={formData.Location} 
                         onChange={handleChange}
                         sx={classes.formField} 
                         label={'Location'} 
@@ -64,7 +68,7 @@ export const SpotForm = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField 
-                        value={ formData.description } 
+                        value={ formData.Description } 
                         onChange={ handleChange }
                         sx={ classes.formField } 
                         label={'Description'} 
