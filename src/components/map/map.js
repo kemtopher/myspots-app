@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeActive, setActive } from '../../store/slices/events';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useGeolocation } from '../../hooks/useGeoLocation';
 mapboxgl.accessToken =
   'pk.eyJ1IjoiY2tlbWV6YTEiLCJhIjoiY2x1eDJlb2ZkMGoyYTJsa2xvdjNlbWdtOCJ9.sqWPYFQf4FJtw47DYoGI0g';
 let markersGroup = [];
