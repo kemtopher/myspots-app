@@ -8,7 +8,6 @@ import { RideList } from './components/ride-list/ride-list';
 import { SpotForm } from './components/spot-form/spot-form';
 import './App.scss';
 
-// const Map = lazy(() => import(webpackChunkName: 'Map', ));
 
 export const App = ({ loading, error }) => {
   const classes = {
@@ -18,7 +17,6 @@ export const App = ({ loading, error }) => {
   };
 
   const events = useSelector((state) => state.events.value);
-  const coords = useSelector((state) => state.coordinates.current);
   const [eventsFilter, setEventsFilter] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState([]);
@@ -29,7 +27,6 @@ export const App = ({ loading, error }) => {
       setShowForm(false);
     } 
     else if (eventsFilter === 'add-spot') {
-      const hostingEvents = events.filter((event) => event.hosting === true);
       setFilteredEvents(events);
       setShowForm(true);
     }

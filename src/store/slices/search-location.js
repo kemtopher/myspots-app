@@ -2,10 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   location: {
-    coords: [],
     name: "",
     address: "",
-    description: "",
+    coords: [],
   }
 };
 

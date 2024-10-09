@@ -13,7 +13,7 @@ export const SearchField = () => {
   useEffect(() => {
     const getLocations = setTimeout(() => {
       fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${fieldText}.json?types=postcode,address,neighborhood&access_token=pk.eyJ1IjoiYXF1YXllIiwiYSI6ImNrN3NjdTdmczBkZmQzZnIyenZ1djR1dXkifQ.chRGR88GhxPG1Yk-2DDzqw`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${fieldText}.json?access_token=pk.eyJ1IjoiYXF1YXllIiwiYSI6ImNrN3NjdTdmczBkZmQzZnIyenZ1djR1dXkifQ.chRGR88GhxPG1Yk-2DDzqw`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -33,7 +33,7 @@ export const SearchField = () => {
         if (!value?.center) return;
 
         if (value.center !== null) {
-          dispatch(setLocation({coords: [value.center[0], value.center[1]], name: value.text, address: value.place_name, description: ""}))
+          dispatch(setLocation({coords: [value.center[0], value.center[1]], name: value.text, address: value.place_name}))
           dispatch(setCurrent([value.center[0], value.center[1]]));
         }
       }}
