@@ -3,15 +3,15 @@ import { Grid } from '@mui/material';
 import { Map } from './components/map/map';
 import { MapLoader } from './components/map-loader/map-loader';
 import { useSelector } from 'react-redux';
-import { RideActions } from './components/ride-actions/ride-actions';
-import { RideList } from './components/ride-list/ride-list';
+import { SpotlistHeader } from './components/spotlist-header/spotlist-header';
+import { SpotList } from './components/spot-list/spot-list';
 import { SpotForm } from './components/spot-form/spot-form';
 import './App.scss';
 
 
 export const App = ({ loading, error }) => {
   const classes = {
-    ridelist: {
+    spotlist: {
       height: '100%'
     }
   };
@@ -48,13 +48,13 @@ export const App = ({ loading, error }) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4} sx={classes.ridelist}>
-          <Grid container sx={classes.ridelist}>
+        <Grid item xs={12} md={4} sx={classes.spotlist}>
+          <Grid container sx={classes.spotlist}>
             <Grid item xs={12}>
-              <RideActions eventsFilter={eventsFilter} setEventsFilter={setEventsFilter} />
+              <SpotlistHeader eventsFilter={eventsFilter} setEventsFilter={setEventsFilter} />
             </Grid>
             <Grid item xs={12} sx={{ height: 'calc(100% - 60px)' }}>
-              { showForm ? <SpotForm /> : <RideList nodes={filteredEvents} /> }
+              { showForm ? <SpotForm /> : <SpotList nodes={filteredEvents} /> }
             </Grid>
           </Grid>
         </Grid>

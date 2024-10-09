@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 
-export const RideActions = ({ setEventsFilter, eventsFilter }) => {
+export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
   const styles = {
     actionContainer: {
       height: '56px',
@@ -42,19 +42,6 @@ export const RideActions = ({ setEventsFilter, eventsFilter }) => {
       >
         Show All
       </Button>
-      {/* <Button
-        variant="contained"
-        fullWidth
-        size="large"
-        disabled={eventsFilter === 'rsvp'}
-        disableElevation
-        disableRipple
-        destination="/rides/going"
-        sx={styles.actionButton}
-        onClick={() => setEventsFilter('rsvp')}
-      >
-        RSVP'd
-      </Button> */}
       <Button
         variant="contained"
         fullWidth

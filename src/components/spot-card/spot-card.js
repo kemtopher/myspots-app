@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-export const RideCard = ({ data, node }) => {
+export const SpotCard = ({ data, node }) => {
   const dispatch = useDispatch();
   const classes = {
     card: {

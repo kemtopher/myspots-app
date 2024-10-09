@@ -14,12 +14,12 @@ import {
   Typography,
   Box,
 } from '@mui/material';
-import { RideCard } from '../ride-card/ride-card';
+import { SpotCard } from '../spot-card/spot-card';
 import { CardDescription } from '../card-description/card-description';
 
-export const RideList = ({ nodes }) => {
+export const SpotList = ({ nodes }) => {
   const dispatch = useDispatch();
-  const rideList = useRef();
+  const spotlist = useRef();
   const accordionEls = useRef([]);
 
   const classes = {
@@ -94,7 +94,7 @@ export const RideList = ({ nodes }) => {
         </Grid>
       </section> */}
 
-      <section id="ride-list" ref={rideList} style={classes.scrolllist}>
+      <section id="ride-list" ref={spotlist} style={classes.scrolllist}>
         {nodes.length ? (
           <>
             {nodes.map((node, index) => (
@@ -122,7 +122,7 @@ export const RideList = ({ nodes }) => {
                     dispatch(clearFocused());
                   }}
                 >
-                  <RideCard key={index} data={node} node={node} />
+                  <SpotCard key={index} data={node} node={node} />
                 </AccordionSummary>
 
                 <AccordionDetails sx={classes.details}>
