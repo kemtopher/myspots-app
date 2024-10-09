@@ -24,3 +24,5 @@ yarn-error.log*
 /.env
 /env.js
 *storybook.log
+# Local Netlify folder
+.netlify
