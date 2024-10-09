@@ -66,10 +66,7 @@ export const SpotForm = () => {
                     <Typography variant="h4" gutterBottom>Add a new Spot</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <SearchField formBusy={formBusy}/>
-                </Grid>
-                <Grid item xs={6}>
-                    <Button variant='contained'>Add Spot</Button>
+                    <SearchField />
                 </Grid>
             </Grid>
 
