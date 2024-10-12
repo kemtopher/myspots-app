@@ -110,13 +110,15 @@ export const SpotForm = () => {
                     />
                 </Grid>
 
-                <Button
-                    variant= 'contained'
-                    onClick={handleFormSubmit}
-                    disabled={formBusy}
-                >
-                    Submit
-                </Button>
+                <Grid item xs={12}>
+                    <Button
+                        variant= 'contained'
+                        onClick={handleFormSubmit}
+                        disabled={formBusy}
+                    >
+                        Submit
+                    </Button>
+                </Grid>
             </Grid>
         </Grid>
     )
