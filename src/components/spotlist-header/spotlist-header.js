@@ -9,25 +9,18 @@ import {
 import { SearchField } from '../search-field/search-field';
 
 export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
-  const [listView, setListView] = useState(true);
-
   const styles = {
     actionContainer: {
       height: '56px',
       width: '100%',
-      background: '#1565c0'
+      background: 'var(--light-10)'
     },
     actionButton: {
-      width: '100%',
-      height: '56px',
-      borderRadius: '0',
-      borderRight: '0px solid #fff',
+      height: '100%',
+      color: 'var(--primary-20)',
 
       '&.Mui-disabled': {
-        background: '#1565c0',
-        border: '0px solid #ffffff',
-        borderRight: '0px solid #ffffff !important',
-        color: '#fdfdfd',
+        color: 'var(--primary-40)',
       },
     },
   };
@@ -38,12 +31,7 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
       sx={styles.actionContainer}
     >
       <Grid item xs={10}>
-          <SearchField 
-            sx={{
-              backgroundColor: "#ffffff",
-              color: '#ffffff'
-            }}
-          />
+          <SearchField />
       </Grid>
       <Grid item xs={2}>
           <IconButton
@@ -52,7 +40,7 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
             disabled={eventsFilter === 'add-spot'}
             disableFocusRipple
             disableRipple
-            sx={{height: '100%', color: '#ffffff'}}
+            sx={styles.actionButton}
             onClick={() => setEventsFilter('add-spot')}
           >
             <AddLocationAlt />
@@ -63,44 +51,12 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
             disabled={eventsFilter === 'show-all'}
             disableFocusRipple
             disableRipple
-            sx={{height: '100%', color: '#ffffff'}}
+            sx={styles.actionButton}
             onClick={() => setEventsFilter('show-all')}
           >
-          <Feed />
+          <List />
         </IconButton>
       </Grid>
     </Grid>
-    // <ButtonGroup
-    //   variant="contained"
-    //   color="primary"
-    //   aria-label="contained primary button group"
-    //   sx={styles.actionContainer}
-    // >
-    //   <Button
-    //     variant="contained"
-    //     fullWidth
-    //     size="large"
-    //     disabled={eventsFilter === 'show-all'}
-    //     disableElevation
-    //     disableRipple
-    //     aria-label="Edit Event"
-    //     sx={styles.actionButton}
-    //     onClick={() => setEventsFilter('show-all')}
-    //   >
-    //     Show All
-    //   </Button>
-    //   <Button
-    //     variant="contained"
-    //     fullWidth
-    //     size="large"
-    //     disabled={eventsFilter === 'add-spot'}
-    //     disableElevation
-    //     disableRipple
-    //     sx={styles.actionButton}
-    //     onClick={() => setEventsFilter('add-spot')}
-    //   >
-    //     Add Spot
-    //   </Button>
-    // </ButtonGroup>
   );
 };
