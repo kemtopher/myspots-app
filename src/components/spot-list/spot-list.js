@@ -73,75 +73,53 @@ export const SpotList = ({ nodes }) => {
   };
 
   return (
-    <>
-      {/* <section>
-        <Grid container sx={classes.header} display="flex">
-          <Grid item xs={5}>
-            <Typography variant="h3" align={'left'} sx={classes.headerTitle}>
-              Ride
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography variant="h3" align={'left'} sx={classes.headerTitle}>
-              Time
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h3" align={'left'} sx={classes.headerTitle}>
-              Actions
-            </Typography>
-          </Grid>
-        </Grid>
-      </section> */}
-
-      <section id="ride-list" ref={spotlist} style={classes.scrolllist}>
-        {nodes.length ? (
-          <>
-            {nodes.map((node, index) => (
-              <Accordion
-                expanded={true}
-                sx={node.active ? classes.activeAccordion : classes.accordion}
-                ref={(el) => (accordionEls.current[index] = el)}
-                key={node.id}
+    <section id="ride-list" ref={spotlist} style={classes.scrolllist}>
+      {nodes.length ? (
+        <>
+          {nodes.map((node, index) => (
+            <Accordion
+              expanded={true}
+              sx={node.active ? classes.activeAccordion : classes.accordion}
+              ref={(el) => (accordionEls.current[index] = el)}
+              key={node.id}
+            >
+              <AccordionSummary
+                aria-controls="panel1-content"
+                id="panel1-header"
+                sx={classes.removePadding}
+                onClick={() => {
+                  if (node.active) {
+                    dispatch(removeActive(node));
+                  } else {
+                    dispatch(setActive(node));
+                  }
+                }}
+                onMouseEnter={() => {
+                  dispatch(setFocused(node))
+                }}
+                onMouseLeave={() => {
+                  dispatch(clearFocused());
+                }}
               >
-                <AccordionSummary
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                  sx={classes.removePadding}
-                  onClick={() => {
-                    if (node.active) {
-                      dispatch(removeActive(node));
-                    } else {
-                      dispatch(setActive(node));
-                    }
-                  }}
-                  onMouseEnter={() => {
-                    dispatch(setFocused(node))
-                  }}
-                  onMouseLeave={() => {
-                    dispatch(clearFocused());
-                  }}
-                >
-                  <SpotCard key={index} data={node} node={node} />
-                </AccordionSummary>
+                <SpotCard key={index} data={node} node={node} />
+              </AccordionSummary>
 
-                <AccordionDetails sx={classes.details}>
-                  <CardDescription data={node} />
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </>
-        ) : (
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            height="100%"
-          >
-            <Typography component="h1">No rides to show yet ...</Typography>
-          </Box>
-        )}
-      </section>
-    </>
+              <AccordionDetails sx={classes.details}>
+                <CardDescription data={node} />
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </>
+      ) : (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+        >
+          <Typography component="h1">No rides to show yet ...</Typography>
+        </Box>
+      )}
+    </section>
   );
 };
