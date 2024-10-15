@@ -31,7 +31,9 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
       sx={styles.actionContainer}
     >
       <Grid item xs={10}>
-          <SearchField />
+          <SearchField 
+            sx={{border: '0px solid #fff'}}
+          />
       </Grid>
       <Grid item xs={2}>
           <IconButton
@@ -48,7 +50,7 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
           <IconButton
             variant="comtained"
             aria-label="Add Location Form"
-            disabled={eventsFilter === 'show-all'}
+            disabled={eventsFilter === null || eventsFilter === 'show-all'}
             disableFocusRipple
             disableRipple
             sx={styles.actionButton}
