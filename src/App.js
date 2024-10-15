@@ -4,6 +4,7 @@ import { Map } from './components/map/map';
 import { MapLoader } from './components/map-loader/map-loader';
 import { useSelector } from 'react-redux';
 import { SpotlistHeader } from './components/spotlist-header/spotlist-header';
+import { AppNavigation } from './components/app-navigation/app-navigation';
 import { SpotList } from './components/spot-list/spot-list';
 import { SpotForm } from './components/spot-form/spot-form';
 import './App.scss';
@@ -37,7 +38,8 @@ export const App = ({ loading, error }) => {
   }, [events, eventsFilter]);
 
   return (
-    <div className="App" style={{ height: '100vh' }}>
+    <div className="App" style={{ height: 'calc(100vh - 68px)' }}>
+      <AppNavigation />
       <Grid container spacing={0} sx={{ height: '100%' }}>
         <Grid item xs={12} md={8} sx={{ height: '100%' }}>
           <Grid container sx={{ height: '100%' }}>
