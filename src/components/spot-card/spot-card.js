@@ -1,18 +1,16 @@
 import React from 'react';
-import { Place } from '@mui/icons-material';
-import { ThumbUp, Delete, Edit } from '@mui/icons-material';
-import {
-  removeEvent,
-  setRsvp,
-  editEvent
-} from '../../store/slices/events';
+import { Delete, Edit, Place } from '@mui/icons-material';
 import {
   AccordionActions,
   Grid,
-  Typography,
   IconButton,
-  Rating
+  Rating,
+  Typography
 } from '@mui/material';
+import {
+  editEvent,
+  removeEvent
+} from '../../store/slices/events';
 import { useDispatch } from 'react-redux';
 
 export const SpotCard = ({ data, node }) => {
@@ -23,7 +21,8 @@ export const SpotCard = ({ data, node }) => {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'nowrap',
-      padding: '1em'
+      padding: '1em',
+      // borderBottom: '1px solid var(--light-40)',
 
       // "&:last-child": {
       //     borderBottom: '0px solid #fff'
@@ -32,33 +31,22 @@ export const SpotCard = ({ data, node }) => {
     actions: {
       flexWrap: 'nowrap'
     },
-    rideTitle: {
+    spotName: {
       fontSize: '1.15em',
       color: 'var(--primary-40)',
       fontWeight: 700,
       textDecoration: 'none'
-
-      // "&:hover": {
-      //     textDecoration: 'none',
-      //     color: 'var(--primary-40)'
-      // }
     },
-    ridePlace: {
+    location: {
       color: 'var(--primary-40)',
       display: 'flex',
       alignItems: 'center',
       lineHeight: '2'
     },
-    rideTime: {
-      justifyContent: 'flext-start'
-    },
-    secondaryText: {
-      color: 'var(--primary-40)'
-    },
-    uncheckedIcon: {
+    inactive: {
       color: 'var(--light-40)'
     },
-    checkedIcon: {
+    active: {
       color: 'var(--primary-40)'
     }
   };
@@ -67,34 +55,22 @@ export const SpotCard = ({ data, node }) => {
     <Grid container sx={classes.card}>
       <Grid container item rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={9}>
-          <Typography component="h2" sx={classes.rideTitle}>
+          <Typography component="h2" sx={classes.spotName}>
             {data.name}
           </Typography>
 
-          <Typography component="h2" sx={classes.ridePlace}>
+          <Typography component="h2" sx={classes.location}>
             <Place fontSize="medium" />
             {data.address}
           </Typography>
         </Grid>
 
         <Grid item xs={3} sx={classes.actions}>
-          <Rating name="read-only" value={3} precision={0.5} size="small" readOnly />
+          {/* <Rating name="read-only" value={3} precision={0.5} size="small" readOnly /> */}
           <AccordionActions>
-            {/* <IconButton
-              variant="contained"
-              sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
-              aria-label="RSVP to Event"
-              disableFocusRipple
-              disableRipple
-              onClick={() => {
-                dispatch(setRsvp(node));
-              }}
-            >
-              <ThumbUp />
-            </IconButton> */}
             <IconButton
               variant="contained"
-              sx={node.rsvp ? classes.checkedIcon : classes.uncheckedIcon}
+              sx={node.rsvp ? classes.active : classes.inactive}
               aria-label="Edit Event"
               disableFocusRipple
               disableRipple

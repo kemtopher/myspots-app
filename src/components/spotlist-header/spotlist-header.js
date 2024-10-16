@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Grid, IconButton } from '@mui/material';
 import {
   List,
-  Feed,
-  LocationSearching,
   AddLocationAlt
 } from '@mui/icons-material';
 import { SearchField } from '../search-field/search-field';
@@ -17,10 +15,10 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
     },
     actionButton: {
       height: '100%',
-      color: 'var(--primary-20)',
+      color: 'var(--dark-10)',
 
       '&.Mui-disabled': {
-        color: 'var(--primary-40)',
+        color: 'var(--primary-20)',
       },
     },
   };

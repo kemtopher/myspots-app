@@ -1,18 +1,17 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  setActive,
+  clearFocused,
   removeActive,
+  setActive,
   setFocused,
-  clearFocused
 } from '../../store/slices/events';
 import {
   Accordion,
-  AccordionSummary,
   AccordionDetails,
-  Grid,
-  Typography,
+  AccordionSummary,
   Box,
+  Typography,
 } from '@mui/material';
 import { SpotCard } from '../spot-card/spot-card';
 import { CardDescription } from '../card-description/card-description';
@@ -47,7 +46,7 @@ export const SpotList = ({ nodes }) => {
       height: '100%'
     },
     scrolllist: {
-      height: 'calc(100% - 60px)',
+      height: '100%',
       overflow: 'scroll'
     },
     actions: {
@@ -73,7 +72,7 @@ export const SpotList = ({ nodes }) => {
   };
 
   return (
-    <section id="ride-list" ref={spotlist} style={classes.scrolllist}>
+    <section ref={spotlist} style={classes.scrolllist}>
       {nodes.length ? (
         <>
           {nodes.map((node, index) => (
@@ -84,8 +83,7 @@ export const SpotList = ({ nodes }) => {
               key={node.id}
             >
               <AccordionSummary
-                aria-controls="panel1-content"
-                id="panel1-header"
+                aria-controls="content-panel"
                 sx={classes.removePadding}
                 onClick={() => {
                   if (node.active) {
