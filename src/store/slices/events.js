@@ -9,7 +9,7 @@ const initialState = {
       datetime: '2025-06-30T12:00:00Z',
       id: '1',
       location: {
-        coordinates: [-84.363384,33.752141]
+        coordinates: [-84.363384, 33.752141]
       },
       name: '97 Estoria',
       description:
@@ -52,7 +52,7 @@ const initialState = {
       },
       name: 'North Highland Bakery',
       description:
-        "I could definitely tell it was a popular place. It was packed, just like I remembered it, but we were able to get seated pretty quickly. We ordered the half stack of the sweet potato pancakes. They were rich and fluffy, without being too sweet. Delicious! We also each ordered the fried chicken benedict, which was amazing. A homemade biscuit topped flaky fried chicken and a plump poached egg, topped with rich, homemade jalapeño cheddar sauce. And with food this perfect, it was still the people who work there that make this place what it is. This, is the perfect brunch experience."
+        'I could definitely tell it was a popular place. It was packed, just like I remembered it, but we were able to get seated pretty quickly. We ordered the half stack of the sweet potato pancakes. They were rich and fluffy, without being too sweet. Delicious! We also each ordered the fried chicken benedict, which was amazing. A homemade biscuit topped flaky fried chicken and a plump poached egg, topped with rich, homemade jalapeño cheddar sauce. And with food this perfect, it was still the people who work there that make this place what it is. This, is the perfect brunch experience.'
     },
     {
       active: false,
@@ -78,7 +78,7 @@ const initialState = {
       },
       name: 'The Albert',
       description:
-        "Casual watering hole with brick decor dishes up pub grub including a variety of specialty hot dogs."
+        'Casual watering hole with brick decor dishes up pub grub including a variety of specialty hot dogs.'
     },
     {
       active: false,
@@ -104,7 +104,7 @@ const initialState = {
       },
       name: 'Strangers In Paradise',
       description:
-        "The 1,200-square-foot space features two small areas set up like living rooms and a bar that seats 24. Pink leather couches offer space to lounge with plantation shutters separating Strangers in Paradise from the rest of the food hall. Hundreds of old-school postcards function as wallpaper behind the bar, surrounding a neon-lit alligator sign. Need another reminder you’ve left the Peach State? Flamingo motifs abound, including in the form of a ceramic mug serving the “Pink Flamingo” cocktail (prosecco, aperol, watermelon nectar, and lemon). Plants surround the space, and a garage door opens onto a covered patio with a ramp to the BeltLine. The decor is thrifted, much of it hand-picked by Lennox, with souvenir cups lining the walls. Expect an upbeat yet nostalgic soundtrack featuring 30 hours of curated ’80s, classic rock, pop, new wave, and the occasional reggae and Harry Belafonte. Old Florida indeed."
+        'The 1,200-square-foot space features two small areas set up like living rooms and a bar that seats 24. Pink leather couches offer space to lounge with plantation shutters separating Strangers in Paradise from the rest of the food hall. Hundreds of old-school postcards function as wallpaper behind the bar, surrounding a neon-lit alligator sign. Need another reminder you’ve left the Peach State? Flamingo motifs abound, including in the form of a ceramic mug serving the “Pink Flamingo” cocktail (prosecco, aperol, watermelon nectar, and lemon). Plants surround the space, and a garage door opens onto a covered patio with a ramp to the BeltLine. The decor is thrifted, much of it hand-picked by Lennox, with souvenir cups lining the walls. Expect an upbeat yet nostalgic soundtrack featuring 30 hours of curated ’80s, classic rock, pop, new wave, and the occasional reggae and Harry Belafonte. Old Florida indeed.'
     },
     {
       active: false,
@@ -130,7 +130,7 @@ const initialState = {
       },
       name: 'Bocca Lupo',
       description:
-        "BoccaLupo is a bustling neighborhood restaurant located in Inman Park. We specialize in handmade and extruded pasta dishes with an eye on seasonality and where it comes from. Chef Bruce Logue and his team are passionate about questioning what is considered Italian-American cooking. With a casual vibe, genuine service and a talented bar team BoccaLupo continues to be an Atlanta must."
+        'BoccaLupo is a bustling neighborhood restaurant located in Inman Park. We specialize in handmade and extruded pasta dishes with an eye on seasonality and where it comes from. Chef Bruce Logue and his team are passionate about questioning what is considered Italian-American cooking. With a casual vibe, genuine service and a talented bar team BoccaLupo continues to be an Atlanta must.'
     },
     {
       active: false,
@@ -359,26 +359,35 @@ export const eventsSlice = createSlice({
       let focusedState = state.value.map((event) => {
         if (event.id !== action.payload.id) {
           if (event.focused) {
-            return { ...event, focused: false }
+            return { ...event, focused: false };
           }
 
           return event;
         }
 
-        return { ...event, focused: true }
-      })
+        return { ...event, focused: true };
+      });
 
       state.value = focusedState;
     },
     clearFocused: (state, action) => {
       let clearState = state.value.map((event) => {
-        return {...event, focused: false}
-      })
+        return { ...event, focused: false };
+      });
 
       state.value = clearState;
     }
   }
 });
 
-export const { createEvent, removeEvent, editEvent, setActive, removeActive, setRsvp, setFocused, clearFocused } = eventsSlice.actions;
+export const {
+  createEvent,
+  removeEvent,
+  editEvent,
+  setActive,
+  removeActive,
+  setRsvp,
+  setFocused,
+  clearFocused
+} = eventsSlice.actions;
 export default eventsSlice.reducer;

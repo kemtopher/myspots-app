@@ -4,14 +4,14 @@ import {
   clearFocused,
   removeActive,
   setActive,
-  setFocused,
+  setFocused
 } from '../../store/slices/events';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
-  Typography,
+  Typography
 } from '@mui/material';
 import { SpotCard } from '../spot-card/spot-card';
 import { CardDescription } from '../card-description/card-description';
@@ -93,7 +93,7 @@ export const SpotList = ({ nodes }) => {
                   }
                 }}
                 onMouseEnter={() => {
-                  dispatch(setFocused(node))
+                  dispatch(setFocused(node));
                 }}
                 onMouseLeave={() => {
                   dispatch(clearFocused());

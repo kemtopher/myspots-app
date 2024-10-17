@@ -18,11 +18,11 @@ export const useGeolocation = (options) => {
     };
 
     navigator.geolocation.getCurrentPosition(
-        successHandler,
-        errorHandler,
-        options
+      successHandler,
+      errorHandler,
+      options
     );
-  }, [options])
+  }, [options]);
 
   return { loading, error, data };
 };

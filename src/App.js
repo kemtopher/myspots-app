@@ -7,18 +7,17 @@ import useWindowDimensions from './hooks/useWindowDemensions';
 import { AppStage } from './components/app-stage/app-stage';
 import './App.scss';
 
-
 export const App = () => {
   const { loading, error, data } = useGeolocation();
   const dispatch = useDispatch();
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
 
   useEffect(() => {
     if (!data.latitude || !data.longitude) return;
 
     dispatch(setCurrent([data.longitude, data.latitude]));
   }, [data, dispatch]);
-  
+
   return (
     <div className="App" style={{ height: height }}>
       {/* <AppNavigation /> */}

@@ -33,7 +33,13 @@ export const SearchField = () => {
         if (!value?.center) return;
 
         if (value.center !== null) {
-          dispatch(setLocation({coords: [value.center[0], value.center[1]], name: value.text, address: value.place_name}))
+          dispatch(
+            setLocation({
+              coords: [value.center[0], value.center[1]],
+              name: value.text,
+              address: value.place_name
+            })
+          );
           dispatch(setCurrent([value.center[0], value.center[1]]));
         }
       }}
@@ -48,7 +54,7 @@ export const SearchField = () => {
           }}
           value={fieldText}
           onChange={(event) => {
-            setFieldText(event.target.value)
+            setFieldText(event.target.value);
           }}
         />
       )}

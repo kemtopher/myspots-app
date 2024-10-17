@@ -1,9 +1,6 @@
 import React from 'react';
 import { Grid, IconButton } from '@mui/material';
-import {
-  List,
-  AddLocationAlt
-} from '@mui/icons-material';
+import { List, AddLocationAlt } from '@mui/icons-material';
 import { SearchField } from '../search-field/search-field';
 
 export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
@@ -18,42 +15,37 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
       color: 'var(--dark-10)',
 
       '&.Mui-disabled': {
-        color: 'var(--primary-20)',
-      },
-    },
+        color: 'var(--primary-20)'
+      }
+    }
   };
 
   return (
-    <Grid
-      container
-      sx={styles.actionContainer}
-    >
+    <Grid container sx={styles.actionContainer}>
       <Grid item xs={10}>
-          <SearchField 
-            sx={{border: '0px solid #fff'}}
-          />
+        <SearchField sx={{ border: '0px solid #fff' }} />
       </Grid>
       <Grid item xs={2}>
-          <IconButton
-            variant="comtained"
-            aria-label="View Locations List"
-            disabled={eventsFilter === 'add-spot'}
-            disableFocusRipple
-            disableRipple
-            sx={styles.actionButton}
-            onClick={() => setEventsFilter('add-spot')}
-          >
-            <AddLocationAlt />
-          </IconButton>
-          <IconButton
-            variant="comtained"
-            aria-label="Add Location Form"
-            disabled={eventsFilter === null || eventsFilter === 'show-all'}
-            disableFocusRipple
-            disableRipple
-            sx={styles.actionButton}
-            onClick={() => setEventsFilter('show-all')}
-          >
+        <IconButton
+          variant="comtained"
+          aria-label="View Locations List"
+          disabled={eventsFilter === 'add-spot'}
+          disableFocusRipple
+          disableRipple
+          sx={styles.actionButton}
+          onClick={() => setEventsFilter('add-spot')}
+        >
+          <AddLocationAlt />
+        </IconButton>
+        <IconButton
+          variant="comtained"
+          aria-label="Add Location Form"
+          disabled={eventsFilter === null || eventsFilter === 'show-all'}
+          disableFocusRipple
+          disableRipple
+          sx={styles.actionButton}
+          onClick={() => setEventsFilter('show-all')}
+        >
           <List />
         </IconButton>
       </Grid>

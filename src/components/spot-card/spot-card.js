@@ -7,10 +7,7 @@ import {
   Rating,
   Typography
 } from '@mui/material';
-import {
-  editEvent,
-  removeEvent
-} from '../../store/slices/events';
+import { editEvent, removeEvent } from '../../store/slices/events';
 import { useDispatch } from 'react-redux';
 
 export const SpotCard = ({ data, node }) => {
@@ -21,7 +18,7 @@ export const SpotCard = ({ data, node }) => {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'nowrap',
-      padding: '1em',
+      padding: '1em'
       // borderBottom: '1px solid var(--light-40)',
 
       // "&:last-child": {
@@ -53,7 +50,12 @@ export const SpotCard = ({ data, node }) => {
 
   return (
     <Grid container sx={classes.card}>
-      <Grid container item rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid
+        container
+        item
+        rowSpacing={1}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
         <Grid item xs={9}>
           <Typography component="h2" sx={classes.spotName}>
             {data.name}

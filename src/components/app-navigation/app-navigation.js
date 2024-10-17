@@ -57,7 +57,13 @@ export const AppNavigation = () => {
             }}
           >
             SPOTLIST
-            <SortIcon sx={{ height: '100%', display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <SortIcon
+              sx={{
+                height: '100%',
+                display: { xs: 'none', md: 'flex' },
+                mr: 1
+              }}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -75,17 +81,17 @@ export const AppNavigation = () => {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'left',
+                horizontal: 'left'
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'left'
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
               {pages.map((page) => (
@@ -103,17 +109,23 @@ export const AppNavigation = () => {
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
-              alignItems: 'center', 
+              alignItems: 'center',
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
-              textDecoration: 'none',
+              textDecoration: 'none'
             }}
           >
             SPOTLIST
-            <SortIcon sx={{ height: '100%', display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <SortIcon
+              sx={{
+                height: '100%',
+                display: { xs: 'flex', md: 'none' },
+                mr: 1
+              }}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -139,12 +151,12 @@ export const AppNavigation = () => {
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'right'
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'right'
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -160,4 +172,4 @@ export const AppNavigation = () => {
       </Container>
     </AppBar>
   );
-}
+};
