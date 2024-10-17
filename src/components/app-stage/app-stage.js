@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Global } from '@emotion/react';
-import { Box, Grid, SwipeableDrawer, useMediaQuery } from '@mui/material';
+import { Grid, SwipeableDrawer, useMediaQuery } from '@mui/material';
 import { Map } from '../map/map';
 import { MapLoader } from '../map-loader/map-loader';
 import { SpotlistHeader } from '../spotlist-header/spotlist-header';
@@ -66,9 +66,7 @@ export const AppStage = ({loading, error}) => {
               </MapLoader>
             </Grid>
           </Grid>
-            <Global
-                styles={styles.muiDrawer}
-            />
+            <Global styles={styles.muiDrawer} />
           <SwipeableDrawer
             anchor={mobileDrawer ? 'bottom' : 'right'}
             open={open}
@@ -79,17 +77,8 @@ export const AppStage = ({loading, error}) => {
             hideBackdrop
             sx={{ left:'unset' }}
           >
-            
-            <Box
-                height='100%'
-                width='100%'
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-            >
-                <SpotlistHeader eventsFilter={eventsFilter} setEventsFilter={setEventsFilter} />
-                { showForm ? <SpotForm /> : <SpotList nodes={filteredEvents} /> }
-            </Box>
+            <SpotlistHeader eventsFilter={eventsFilter} setEventsFilter={setEventsFilter} />
+            { showForm ? <SpotForm /> : <SpotList nodes={filteredEvents} /> }
           </SwipeableDrawer>
         </Grid>
       </Grid>
