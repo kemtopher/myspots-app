@@ -30,15 +30,14 @@ export const AppStage = ({loading, error}) => {
             }
         }
     }
-
-
-    useEffect(() => {
-        mobileDrawer ? setOpen(false) : setOpen(true)
-    }, [])
     
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
+
+    useEffect(() => {
+        mobileDrawer ? setOpen(false) : setOpen(true);
+    }, [mobileDrawer])
      
     useEffect(() => {
         if (eventsFilter === null || eventsFilter === 'show-all') {
