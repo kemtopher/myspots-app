@@ -19,7 +19,7 @@ export const App = () => {
   
   return (
     <div className="App" style={{ height: '100vh' }}>
-      <AppNavigation />
+      {/* <AppNavigation /> */}
       <AppStage loading={loading} error={error} />
     </div>
   );
