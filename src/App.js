@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useGeolocation } from './hooks/useGeoLocation';
 import { setCurrent } from './store/slices/coordinates';
-import { AppNavigation } from './components/app-navigation/app-navigation';
+// import { AppNavigation } from './components/app-navigation/app-navigation';
 import { AppStage } from './components/app-stage/app-stage';
 import './App.scss';
 
