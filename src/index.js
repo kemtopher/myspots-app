@@ -8,12 +8,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import './globals.css';
 import reportWebVitals from './reportWebVitals';
+import { FormWrapper } from './components/form-wrapper/form-wrapper';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     errorElement: <ErrorPage />
+  },
+  {
+    path: '/auth',
+    element: <FormWrapper />
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
