@@ -113,9 +113,9 @@ export const FormWrapper = ({ children }) => {
                 : 'Signin to discover your next spot'}
             </Typography>
             <FormAuth
-                email={state.email}
+              email={state.email}
               setEmail={setEmail}
-                username={state.username}
+              username={state.username}
               setUsername={setUsername}
               password={state.password}
               setPassword={setPassword}
@@ -129,9 +129,7 @@ export const FormWrapper = ({ children }) => {
               variant="subtitle1"
               onClick={handleFormType}
             >
-              {formType === 'signup'
-                ? "Go signup" :
-                "Register new account"}
+              {formType === 'signup' ? 'Go signup' : 'Register new account'}
             </Link>
           </Box>
         </Grid>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Grid, TextField } from '@mui/material';
 
-
 export const FormAuth = ({
-    email,
+  email,
   setEmail,
   username,
   setUsername,
@@ -21,7 +20,7 @@ export const FormAuth = ({
     },
     fieldStyles: {
       marginBottom: '1em'
-    },
+    }
   };
 
   return (
@@ -36,7 +35,7 @@ export const FormAuth = ({
           required
           sx={styles.fieldStyles}
           fullWidth
-        //   customClass="field-margin-bottom"
+          //   customClass="field-margin-bottom"
           onChange={(e) => setEmail(e)}
         />
 
@@ -72,7 +71,9 @@ export const FormAuth = ({
           size="large"
           disableElevation
           type="submit"
-        >Submit</Button>
+        >
+          Submit
+        </Button>
       </Grid>
     </form>
   );
