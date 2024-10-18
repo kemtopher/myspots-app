@@ -62,7 +62,7 @@ export const AppStage = ({ loading, error }) => {
         </Grid>
 
         <Global styles={styles.muiDrawer} />
-        
+
         <SwipeableDrawer
           anchor={mobileDrawer ? 'bottom' : 'right'}
           open={open}
