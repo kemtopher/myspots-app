@@ -11,7 +11,7 @@ const initialState = {
       location: {
         coordinates: [-84.363384, 33.752141]
       },
-      name: '97 Estoria',
+      name: "Ben's Chicken Shack",
       description:
         'A hipster hangout serving beer & eclectic food, along with live music nights, in a bare bones space.'
     },
@@ -24,7 +24,7 @@ const initialState = {
       location: {
         coordinates: [-84.32, 33.8]
       },
-      name: "Sister Louisa's Church of the Living Room and Ping Pong Emporium",
+      name: "Magnolia blossoms in May",
       description:
         "Sister Louisa's Church of the Living Room and Ping Pong Emporium, or simply Church, is a bar on Edgewood Avenue in the Old Fourth Ward of Atlanta, Georgia, in the United States. It is owned by Grant Henry. Edgewood Avenue in the Old Fourth Ward and 'Church' bar."
     },
