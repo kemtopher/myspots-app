@@ -8,9 +8,9 @@ body {
 
 :root {
   --primary-10: #66b2ff;
-  --primary-20: #0080ff;
-  --primary-30: #0066cc;
-  --primary-40: #004c99;
+  --primary-20: #47858c;
+  --primary-30: #07586b;
+  --primary-40: #07555b;
   --dark-10: #3e3e42;
   --dark-20: #2d2d30;
   --dark-30: #252526;
@@ -18,10 +18,9 @@ body {
   --light-10: #f2f2f2;
   --light-20: #e5e5e5;
   --light-30: #d8d8d8;
-  --light-40: #cccccc;
+  --light-40: #e2e5e2;
   --black: #000000;
   --white: #ffffff;
-  --red: #ff0000;
 }
 
 a:hover {
@@ -35,7 +34,7 @@ a:hover {
 
 .sidebar {
   background-color: rgb(35 55 75 / 90%);
-  color: #fff;
+  color: var(--light-40);
   padding: 6px 12px;
   font-family: monospace;
   z-index: 1;

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import { 
+  Autocomplete,
+  TextField
+} from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setCurrent } from '../../store/slices/coordinates';
 import { setLocation } from '../../store/slices/search-location';
@@ -26,6 +28,7 @@ export const SearchField = () => {
 
   return (
     <Autocomplete
+      sx={{width: '100%'}}
       freeSolo
       options={locationsList}
       getOptionLabel={(option) => option.place_name || ''}
@@ -46,10 +49,11 @@ export const SearchField = () => {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search for location"
+          placeholder="Search For A Location"
           sx={{
             '& .MuiOutlinedInput-root': {
-              borderRadius: '0px'
+              borderRadius: '0px',
+              backgroundColor: 'var(--light-40)'
             }
           }}
           value={fieldText}

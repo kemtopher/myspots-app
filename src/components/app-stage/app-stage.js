@@ -65,10 +65,10 @@ export const AppStage = ({ loading, error }) => {
 
         <SwipeableDrawer
           anchor={mobileDrawer ? 'bottom' : 'right'}
-          open={open}
+          open={false}
           onClose={toggleDrawer(false)}
           onOpen={toggleDrawer(true)}
-          swipeAreaWidth={56}
+          swipeAreaWidth={20}
           disableSwipeToOpen={false}
           hideBackdrop
           sx={{ left: 'unset' }}
