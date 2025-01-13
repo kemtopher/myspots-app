@@ -33,11 +33,12 @@ export const Map = React.memo(({ events }) => {
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/light-v11',
         center: [tempCoords[0], tempCoords[1]],
+        cooperativeGestures: true,
         zoom: 16
       });
 
       const nav = new mapboxgl.NavigationControl({
-        showZoom: true
+        showZoom: false
       });
 
       const geolocate = new mapboxgl.GeolocateControl({
