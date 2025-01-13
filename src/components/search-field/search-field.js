@@ -13,6 +13,8 @@ export const SearchField = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (fieldText === "" ) return;
+    
     const getLocations = setTimeout(() => {
       fetch(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${fieldText}.json?access_token=pk.eyJ1IjoiYXF1YXllIiwiYSI6ImNrN3NjdTdmczBkZmQzZnIyenZ1djR1dXkifQ.chRGR88GhxPG1Yk-2DDzqw`
