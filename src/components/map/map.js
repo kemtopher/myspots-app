@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeActive, setActive } from '../../store/slices/events';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
 mapboxgl.accessToken =
   'pk.eyJ1IjoiY2tlbWV6YTEiLCJhIjoiY2x1eDJlb2ZkMGoyYTJsa2xvdjNlbWdtOCJ9.sqWPYFQf4FJtw47DYoGI0g';
 let markersGroup = [];
@@ -10,26 +11,26 @@ let tempMarker;
 
 export const Map = React.memo(({ events }) => {
   const mapContainer = useRef(null);
-  const map = useRef(null);
-  const marker = useRef(null);
+  const mapRef = useRef(null);
+  const mapMarker = useRef(null);
   const dispatch = useDispatch();
   const tempCoords = useSelector((state) => state.coordinates.current);
   const [geoCoords, setGeoCoords] = useState([]);
 
   useEffect(() => {
-    if (map.current) {
-      if (marker.current) {
-        marker.current.remove();
+    if (mapRef.current) {
+      if (mapMarker.current) {
+        mapMarker.current.remove();
       }
 
-      map.current.flyTo({
+      mapRef.current.flyTo({
         center: [tempCoords[0], tempCoords[1]],
         essential: true
       });
     }
 
-    if (!map.current) {
-      map.current = new mapboxgl.Map({
+    if (!mapRef.current) {
+      mapRef.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/light-v11',
         center: [tempCoords[0], tempCoords[1]],
@@ -48,11 +49,11 @@ export const Map = React.memo(({ events }) => {
         showUserHeading: true
       });
 
-      map.current.addControl(nav, 'top-left');
-      map.current.addControl(geolocate, 'top-left');
+      mapRef.current.addControl(nav, 'top-left');
+      mapRef.current.addControl(geolocate, 'top-left');
 
-      map.current.on('load', () => {
-        map.current.resize();
+      mapRef.current.on('load', () => {
+        mapRef.current.resize();
         geolocate.trigger();
       });
 
@@ -63,7 +64,7 @@ export const Map = React.memo(({ events }) => {
       });
     }
 
-    // return () => map.current.remove();
+    // return () => mapRef.current.remove();
   }, [tempCoords]);
 
   useEffect(() => {
@@ -93,7 +94,7 @@ export const Map = React.memo(({ events }) => {
           event.location.coordinates[0],
           event.location.coordinates[1]
         ])
-        .addTo(map.current);
+        .addTo(mapRef.current);
 
       eventMarker.getElement().addEventListener('click', () => {
         if (event.active) {
@@ -126,7 +127,7 @@ export const Map = React.memo(({ events }) => {
 
     tempMarker = new mapboxgl.Marker({ color: '#656565', scale: 1 })
       .setLngLat([tempCoords[0], tempCoords[1]])
-      .addTo(map.current);
+      .addTo(mapRef.current);
   }, [events, tempCoords, geoCoords]);
 
   return (
