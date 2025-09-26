@@ -27,7 +27,7 @@ export const SearchField = () => {
   return (
     <Autocomplete
       freeSolo
-      options={locationsList}
+      options={locationsList ?? []}
       getOptionLabel={(option) => option.place_name || ''}
       onChange={(event, value) => {
         if (!value?.center) return;

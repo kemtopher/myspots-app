@@ -5,7 +5,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken =
-  'pk.eyJ1IjoiY2tlbWV6YTEiLCJhIjoiY2x1eDJlb2ZkMGoyYTJsa2xvdjNlbWdtOCJ9.sqWPYFQf4FJtw47DYoGI0g';
+  'pk.eyJ1IjoiY2tlbWV6YTEiLCJhIjoiY2x4ZGpjZmNqMDZtMTJwcG9ld3pwMDN5NCJ9.1E0pZwfmESAK8TQeYxqjYg';
+
 let markersGroup = [];
 let tempMarker;
 
@@ -64,7 +65,7 @@ export const Map = React.memo(({ events }) => {
       });
     }
 
-    // return () => mapRef.current.remove();
+    // return () => {}
   }, [tempCoords]);
 
   useEffect(() => {
@@ -106,6 +107,10 @@ export const Map = React.memo(({ events }) => {
 
       markersGroup = [...markersGroup, eventMarker];
     });
+
+    return () => {
+      markersGroup = []
+    }
   });
 
   useEffect(() => {
@@ -128,6 +133,8 @@ export const Map = React.memo(({ events }) => {
     tempMarker = new mapboxgl.Marker({ color: '#656565', scale: 1 })
       .setLngLat([tempCoords[0], tempCoords[1]])
       .addTo(mapRef.current);
+
+      return () => tempMarker.remove();
   }, [events, tempCoords, geoCoords]);
 
   return (
