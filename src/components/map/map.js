@@ -71,6 +71,7 @@ export const Map = ({ events }) => {
   }, [tempCoords]);
 
   useEffect(() => {
+    // marker setup
     if (!mapRef.current) return;
 
     markersGroup.current.forEach(marker => marker.remove());
@@ -98,7 +99,6 @@ export const Map = ({ events }) => {
     return () => {
       markersGroup.current.forEach(marker => marker.remove());
       markersGroup.current = [];
-      console.log("Marker cleanup: ", markersGroup.current)
     }
   }, [dispatch, events]);
 
