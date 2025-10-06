@@ -29,9 +29,9 @@ export const AppStage = ({ loading, error }) => {
     }
   };
 
-  // const toggleDrawer = (newOpen) => () => {
-  //   setOpen(newOpen);
-  // };
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
 
   // useEffect(() => {
   //   mobileDrawer ? setOpen(false) : setOpen(true);
@@ -55,9 +55,9 @@ export const AppStage = ({ loading, error }) => {
       <Grid item xs={12} sx={{ height: '100%' }}>
         <Grid container sx={{ height: '100%' }}>
           <Grid item xs={12}>
-            {/* <MapLoader loading={loading} error={error}> */}
+            <MapLoader loading={loading} error={error}>
               <Map events={filteredEvents} />
-            {/* </MapLoader> */}
+            </MapLoader>
           </Grid>
         </Grid>
 
@@ -65,9 +65,9 @@ export const AppStage = ({ loading, error }) => {
 
         <SwipeableDrawer
           anchor={mobileDrawer ? 'bottom' : 'right'}
-          open={open}
-          // onClose={toggleDrawer(false)}
-          // onOpen={toggleDrawer(true)}
+          open={true}
+          onClose={toggleDrawer(false)}
+          onOpen={toggleDrawer(true)}
           swipeAreaWidth={56}
           disableSwipeToOpen={false}
           hideBackdrop
