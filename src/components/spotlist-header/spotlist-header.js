@@ -3,7 +3,7 @@ import { Grid, IconButton } from '@mui/material';
 import { List, AddLocationAlt } from '@mui/icons-material';
 import { SearchField } from '../search-field/search-field';
 
-export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
+export const SpotlistHeader = ({ setEventsFormState, eventsFormState }) => {
   const styles = {
     actionContainer: {
       height: '56px',
@@ -29,22 +29,22 @@ export const SpotlistHeader = ({ setEventsFilter, eventsFilter }) => {
         <IconButton
           variant="comtained"
           aria-label="View Locations List"
-          disabled={eventsFilter === 'add-spot'}
+          disabled={eventsFormState === 'add-spot'}
           disableFocusRipple
           disableRipple
           sx={styles.actionButton}
-          onClick={() => setEventsFilter('add-spot')}
+          onClick={() => setEventsFormState('add-spot')}
         >
           <AddLocationAlt />
         </IconButton>
         <IconButton
           variant="comtained"
           aria-label="Add Location Form"
-          disabled={eventsFilter === null || eventsFilter === 'show-all'}
+          disabled={eventsFormState === null || eventsFormState === 'show-all'}
           disableFocusRipple
           disableRipple
           sx={styles.actionButton}
-          onClick={() => setEventsFilter('show-all')}
+          onClick={() => setEventsFormState('show-all')}
         >
           <List />
         </IconButton>

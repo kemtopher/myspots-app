@@ -10,10 +10,10 @@ import { SpotForm } from '../spot-form/spot-form';
 
 export const AppStage = ({ loading, error }) => {
   const events = useSelector((state) => state.events.value);
-  const [eventsFilter, setEventsFilter] = useState(null);
+  const [eventsFormState, setEventsFormState] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const mobileDrawer = useMediaQuery('(max-width: 1024px)');
 
   const styles = {
@@ -29,35 +29,35 @@ export const AppStage = ({ loading, error }) => {
     }
   };
 
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
+  // const toggleDrawer = (newOpen) => () => {
+  //   setOpen(newOpen);
+  // };
+
+  // useEffect(() => {
+  //   mobileDrawer ? setOpen(false) : setOpen(true);
+  // }, [mobileDrawer]);
 
   useEffect(() => {
-    mobileDrawer ? setOpen(false) : setOpen(true);
-  }, [mobileDrawer]);
-
-  useEffect(() => {
-    if (eventsFilter === null || eventsFilter === 'show-all') {
+    if (eventsFormState === null || eventsFormState === 'show-all') {
       setFilteredEvents(events);
       setShowForm(false);
-    } else if (eventsFilter === 'add-spot') {
+    } else if (eventsFormState === 'add-spot') {
       setFilteredEvents(events);
       setShowForm(true);
     } else {
       setFilteredEvents(events);
       setShowForm(false);
     }
-  }, [events, eventsFilter]);
+  }, [events, eventsFormState]);
 
   return (
     <Grid container spacing={0} sx={{ height: '100%' }}>
       <Grid item xs={12} sx={{ height: '100%' }}>
         <Grid container sx={{ height: '100%' }}>
           <Grid item xs={12}>
-            <MapLoader loading={loading} error={error}>
+            {/* <MapLoader loading={loading} error={error}> */}
               <Map events={filteredEvents} />
-            </MapLoader>
+            {/* </MapLoader> */}
           </Grid>
         </Grid>
 
@@ -66,16 +66,16 @@ export const AppStage = ({ loading, error }) => {
         <SwipeableDrawer
           anchor={mobileDrawer ? 'bottom' : 'right'}
           open={open}
-          onClose={toggleDrawer(false)}
-          onOpen={toggleDrawer(true)}
+          // onClose={toggleDrawer(false)}
+          // onOpen={toggleDrawer(true)}
           swipeAreaWidth={56}
           disableSwipeToOpen={false}
           hideBackdrop
           sx={{ left: 'unset' }}
         >
           <SpotlistHeader
-            eventsFilter={eventsFilter}
-            setEventsFilter={setEventsFilter}
+            eventsFormState={eventsFormState}
+            setEventsFormState={setEventsFormState}
           />
           {showForm ? <SpotForm /> : <SpotList nodes={filteredEvents} />}
         </SwipeableDrawer>
