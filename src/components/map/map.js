@@ -18,6 +18,7 @@ export const Map = ({ events }) => {
   const tempMarker = useRef(null);
 
   useEffect(() => {
+    // map setup and maintenance
     if (mapRef.current) {
       if (mapMarker.current) {
         mapMarker.current.remove();
@@ -76,31 +77,28 @@ export const Map = ({ events }) => {
     markersGroup.current = [];
 
     events.forEach((event) => {
-      let markerColor, scale;
+      // let markerColor, scale;
 
-      if (event.active) {
-        markerColor = '#FF0000';
-      } else {
-        markerColor = '#1565c0';
-      }
+      // if (event.active) {
+      //   markerColor = '#FF0000';
+      // } else {
+      //   markerColor = '#1565c0';
+      // }
 
-      if (event.focused) {
-        scale = 1.25;
-      } else {
-        scale = 1;
-      }
+      // if (event.focused) {
+      //   scale = 1.25;
+      // } else {
+      //   scale = 1;
+      // }
 
-      let eventMarker = new mapboxgl.Marker({
-        color: markerColor,
-        scale: scale
+      const mapMarker = new mapboxgl.Marker({
+        color: event.active ? '#FF0000' : '#1565c0',
+        scale: event.focused ? 1.25 : 1
       })
-        .setLngLat([
-          event.location.coordinates[0],
-          event.location.coordinates[1]
-        ])
-        .addTo(mapRef.current);
+      .setLngLat(event.location.coordinates)
+      .addTo(mapRef.current);
 
-      eventMarker.getElement().addEventListener('click', () => {
+      mapMarker.getElement().addEventListener('click', () => {
         if (event.active) {
           dispatch(removeActive(event));
         } else {
@@ -108,7 +106,7 @@ export const Map = ({ events }) => {
         }
       });
 
-      markersGroup.current = [...markersGroup.current, eventMarker];
+      markersGroup.current = [...markersGroup.current, mapMarker];
     });
 
     return () => {
