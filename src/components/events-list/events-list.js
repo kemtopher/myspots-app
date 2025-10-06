@@ -16,7 +16,7 @@ import {
 import { SpotCard } from '../spot-card/spot-card';
 import { CardDescription } from '../card-description/card-description';
 
-export const SpotList = ({ nodes }) => {
+export const EventsList = ({ nodes }) => {
   const dispatch = useDispatch();
   const spotlist = useRef();
   const accordionEls = useRef([]);

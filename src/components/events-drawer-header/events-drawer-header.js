@@ -3,7 +3,7 @@ import { Grid, IconButton } from '@mui/material';
 import { List, AddLocationAlt } from '@mui/icons-material';
 import { SearchField } from '../search-field/search-field';
 
-export const SpotlistHeader = ({ setEventsFormState, eventsFormState }) => {
+export const EventsDrawerHeader = ({ setEventsFormState, eventsFormState }) => {
   const styles = {
     actionContainer: {
       height: '56px',

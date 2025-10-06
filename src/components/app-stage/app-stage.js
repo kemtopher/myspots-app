@@ -4,14 +4,14 @@ import { Global } from '@emotion/react';
 import { Grid, SwipeableDrawer, useMediaQuery } from '@mui/material';
 import { Map } from '../map/map';
 import { MapLoader } from '../map-loader/map-loader';
-import { SpotlistHeader } from '../spotlist-header/spotlist-header';
-import { SpotList } from '../spot-list/spot-list';
-import { SpotForm } from '../spot-form/spot-form';
+import { EventsDrawerHeader } from '../events-drawer-header/events-drawer-header';
+import { EventsList } from '../events-list/events-list';
+import { EventsForm } from '../events-form/events-form';
 
 export const AppStage = ({ loading, error }) => {
   const events = useSelector((state) => state.events.value);
   const [eventsFormState, setEventsFormState] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+  const [formView, setFormView] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [open, setOpen] = useState(true);
   const mobileDrawer = useMediaQuery('(max-width: 1024px)');
@@ -40,13 +40,13 @@ export const AppStage = ({ loading, error }) => {
   useEffect(() => {
     if (eventsFormState === null || eventsFormState === 'show-all') {
       setFilteredEvents(events);
-      setShowForm(false);
+      setFormView(false);
     } else if (eventsFormState === 'add-spot') {
       setFilteredEvents(events);
-      setShowForm(true);
+      setFormView(true);
     } else {
       setFilteredEvents(events);
-      setShowForm(false);
+      setFormView(false);
     }
   }, [events, eventsFormState]);
 
@@ -73,11 +73,11 @@ export const AppStage = ({ loading, error }) => {
           hideBackdrop
           sx={{ left: 'unset' }}
         >
-          <SpotlistHeader
+          <EventsDrawerHeader
             eventsFormState={eventsFormState}
             setEventsFormState={setEventsFormState}
           />
-          {showForm ? <SpotForm /> : <SpotList nodes={filteredEvents} />}
+          {formView ? <EventsForm /> : <EventsList nodes={filteredEvents} />}
         </SwipeableDrawer>
       </Grid>
     </Grid>

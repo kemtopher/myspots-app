@@ -4,7 +4,7 @@ import { SearchField } from '../search-field/search-field';
 import { useDispatch, useSelector } from 'react-redux';
 import { createEvent } from '../../store/slices/events';
 
-export const SpotForm = () => {
+export const EventsForm = () => {
   const initialFormState = {
     name: '',
     address: '',
