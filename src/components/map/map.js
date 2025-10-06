@@ -77,20 +77,6 @@ export const Map = ({ events }) => {
     markersGroup.current = [];
 
     events.forEach((event) => {
-      // let markerColor, scale;
-
-      // if (event.active) {
-      //   markerColor = '#FF0000';
-      // } else {
-      //   markerColor = '#1565c0';
-      // }
-
-      // if (event.focused) {
-      //   scale = 1.25;
-      // } else {
-      //   scale = 1;
-      // }
-
       const mapMarker = new mapboxgl.Marker({
         color: event.active ? '#FF0000' : '#1565c0',
         scale: event.focused ? 1.25 : 1
@@ -99,14 +85,14 @@ export const Map = ({ events }) => {
       .addTo(mapRef.current);
 
       mapMarker.getElement().addEventListener('click', () => {
-        if (event.active) {
-          dispatch(removeActive(event));
-        } else {
+        if (event.active) { 
+          dispatch(removeActive(event)); 
+        } else { 
           dispatch(setActive(event));
         }
       });
 
-      markersGroup.current = [...markersGroup.current, mapMarker];
+      markersGroup.current.push(mapMarker);
     });
 
     return () => {
