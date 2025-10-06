@@ -14,8 +14,6 @@ export const Map = ({ events }) => {
   const dispatch = useDispatch();
   const tempCoords = useSelector((state) => state.coordinates.current);
   const [geoCoords, setGeoCoords] = useState([]);
-  // let markersGroup = [];
-  // let tempMarker.current;
   const markersGroup = useRef([]);
   const tempMarker = useRef(null);
 
@@ -72,8 +70,10 @@ export const Map = ({ events }) => {
   }, [tempCoords]);
 
   useEffect(() => {
-    // markersGroup.current.forEach((marker) => marker.remove());
-    // markersGroup.current = [];
+    if (!mapRef.current) return;
+
+    markersGroup.current.forEach(marker => marker.remove());
+    markersGroup.current = [];
 
     events.forEach((event) => {
       let markerColor, scale;
@@ -112,10 +112,11 @@ export const Map = ({ events }) => {
     });
 
     return () => {
-      markersGroup.current.forEach((marker) => marker.remove());
+      markersGroup.current.forEach(marker => marker.remove());
+      markersGroup.current = [];
       console.log("Marker cleanup: ", markersGroup.current)
     }
-  });
+  }, [dispatch, events]);
 
   useEffect(() => {
     if (tempMarker.current) tempMarker.current.remove();
