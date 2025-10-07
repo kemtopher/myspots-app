@@ -106,6 +106,8 @@ export const Map = ({ events }) => {
   }, [dispatch, events]);
 
   useEffect(() => {
+    // revisit this because stringify O(n) & brittle
+    // maybe some sort of numeric compare
     if (tempMarker.current) tempMarker.current.remove();
 
     const tempArr = JSON.stringify(tempCoords);
